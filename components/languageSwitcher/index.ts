@@ -1,0 +1,1 @@
+export { LanguageSwitcherComponent } from './languageSwitcher';

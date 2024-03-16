@@ -1,0 +1,38 @@
+name: Web
+
+on:
+    pull_request:
+        branches: [master]
+    schedule:
+        - cron: '0 6 * * 1'
+
+env:
+    NODE_VERSION: ${{ github.event.inputs.node-version  || '18' }}
+
+jobs:
+    code_issues:
+        runs-on: ubuntu-latest
+        name: 👮‍♂️ Code issues
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  registry-url: https://registry.npmjs.org
+            - run: npm install --frozen-lockfile
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - run: npm run build
+    code_style_issues:
+        name: 💅 Code style issues
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'npm'
+            - name: Install dependencies
+              run: npm ci
+            - name: Find code style issues
+              run: npm run checkcode

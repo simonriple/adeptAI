@@ -1,0 +1,64 @@
+{
+  "heroSubTile": "Adept in compliance",
+  "heroTitle": "Compliance <br /> made easy",
+  "scrolDown": "Learn more",
+  "ourStory": "Our story",
+  "ourStoryDescription": "Adept Concept AS has, together with our customers, been at the forefront of compliance management/regulatory follow-up for over 20 years.",
+  "ourMission": "Our Mission",
+  "ourMissionDescription": "With Adept™, you get full control over all regulations the company has to comply with so that you can easily take care of this in daily operations.",
+  "ourVision": "Let Al do significant part of the work",
+  "ourVisionDescription": "With AI, we have now taken the step up another division. <br /> <br /> We have now integrated AI into Adept™ through the development of the 'Adept™ AI Engine'. The solution has been developed in close collaboration with <u>Webstep</u> and is already in use by some of our customers. In short, the 'Adept AI Engine* extends the solution from being a compliance management tool to actually doing a significant part of the compliance work. The explanation for this success is that we have, with the permission of our customers, been able to develop our AI algorithm based on high-quality Adept'™ data from many years ago. <br /><br /> The solution is therefore not only 'language model'-based, but also largely 'knowledge' - based.We look forward to further developing the solution in collaboration with <u>Webstep</u> and the new opportunities we know are coming.",
+  "ourValues": "Management system and compliance",
+  "ourValuesDescription": "We are there for companies that need assistance in establishing an effective system for regulatory follow-up. Our solution integrates regulatory follow-up into daily operations instills confidence in both their own employees and external stakeholders.",
+  "ourCustomers": "Our customers",
+  "ourCustomersDescription": "Common to all our customers is a recognized need for and a desire to establish an effective system for regulatory follow-up, which ensures compliance and compliance, as well as instilling trust in both our own employees and external stakeholders. Our customers realize that good management of the regulations contributes to both reduced costs and improved competitiveness, and is a prerequisite for future competitiveness.",
+  "documents": "Documents",
+  "documentsDescription": "We have an extensive library of laws, regulations and standards, and we help you to get the other documents you need into the solution. <br />We import directly from several publishers and we have good solutions for entering from Pdf, Word and a number of other formats.*",
+  "documentsInfo": "* We import documents directly from Loudata, Standard Norge and DNV among others. We also upload documents from other publishers provided a valid license is in place.",
+  "ourPartners": "Our partners",
+  "ourPartnersDescription": "We have skilled partners who can assist with everything from interpretation of regulations to management systems and compliance measurements.",
+  "customerTestimonials": "Customer Testimonials",
+  "customerTitle": "Customer",
+  "customers": [
+    {
+      "title": "Unique and user-friendly functionality",
+      "description": "Since the introduction of Adept Concept in Skanska Norway in 2017, we have never looked back. We benefit greatly from the tool in our compliance management against legal/regulatory requirements, standards and internal company requirements from the parent company. We use Adept Concept actively in our governance processes towards the company's head office in Stockholm.<br /><br />The functionality is user-friendly and has led to a much more distributed and more efficient compliance control involving many disciplines within the company. The functionality for the comparison between previous and new versions is unique and has attracted attention in Skanska internationally.",
+      "name": "Peer Chr. Anderssen",
+      "role": "Direktør HMS, Kvalitet og Seriøsitet",
+      "company": "Skanska Norge",
+      "image": "skanska"
+    },
+    {
+      "title": "Solving an almost insurmountable task",
+      "description": "For several years, ABB has used Adept™ as a tool for following up compliance, with a focus on the area around HSE and the external environment since 2011. Without the support that the tool provides, it would be an almost insurmountable task to find out which laws and regulations is changed or updated at any time, but through notification and monitoring as well as highlighting changes, this is now handled in an appropriate and simple way.",
+      "name": "Bjarte Olsen",
+      "role": "Country Quality & Continuous Improvement Manager",
+      "company": "MO Digital Lead",
+      "image": "abb"
+    },
+    {
+      "title": "Simple documentation of compliance",
+      "description": "IMC Diving AS has used Adept™ for compliance management for about 10 years. We are certified according to ISO 9001 and 14001, and with Adept™ it has been a simple matter to document compliance both with requirements in ISO 9001, ISO 14001, authority requirements and customer requirements throughout this period.<br /><br />The focus on documented compliance with requirements is increasing, but we find that this is easy to accommodate, not least after Adept™ introduced the 'Update Centre', where we can easily update our management system in the event of regulatory changes.<br /><br />Clear and attractive reports make it easy to document compliance with external parties.",
+      "name": "Linda Nord Kristiansen",
+      "role": "Quality manager",
+      "company": "IMC Diving AS",
+      "image": "imc"
+    },
+    {
+      "title": "Setting new standards",
+      "description": "Getting four new, state of the art, Jack-up new buildings successfully introduced to, and into operation on the Norwegian Continental Shelf, requires a very structured, solid and trustworthy AoC (Acknowledgement of Compliance) process towards and with the authorities.<br /><br />Even though an AoC process has a lot of repeated and similar activities included, it is for MDN of great importance to ensure- and provide evidence, that our verification process is of an individual and independent character. Obtaining and keeping track of compliance for +12,000 different legislation requirements in an AoC process is a huge task to overcome.<br /><br />With Adept™, being our main tool for performing both Technical-and Operational compliance verifications, we believe we have achieved both a more systematic (aligned across units), consistent (fixed methodology) and maybe most important and sustainable approach to the process and subsequent maintenance and follow up of the AoC, then we had before - This is something which all units in the MDN fleet are benefitting from today.<br /><br />Working with Adept™ is a pleasure. Always professional attendance to challenges we have faced in the process, fast support at all times and a constant vigilant and innovative approach to problem solving. No challenge seems unsolvable for Adept™ and it has been gratifying for MDN to observe and benefit from the constant attempts to improve the portfolio of services included in Adept™™.<br /><br />Both the 'Update Center' and the GAP module for performing internal GAP analysis have created further sustainability.",
+      "name": "Glenn Gormsen",
+      "role": "Compliance manager",
+      "company": "Maersk Drilling Norge AS",
+      "image": "maersk"
+    }
+  ],
+  "contactUs": "Contact us",
+  "contactFormTile": "Contact us for a free, no-obligation demo!",
+  "formName": "Name",
+  "formEmail": "Email",
+  "formMessage": "Message",
+  "formSubmit": "Send",
+  "formInfoPhone": "If you prefer to have an informal chat by phone, we can be reached on:",
+  "formInfoEmail": "Alternatively, you can send us an email at"
+}

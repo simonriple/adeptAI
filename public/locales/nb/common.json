@@ -1,0 +1,64 @@
+{
+  "heroSubTile": "Adept i samsvar",
+  "heroTitle": "Compliance <br /> på en enkel måte",
+  "scrolDown": "Få mer informasjon",
+  "ourStory": "Vår historie",
+  "ourStoryDescription": "Adept Concept AS har, sammen med våre kunder, vært i spiss på samsvarsstyring/regelverksoppfølging i over 20 år.",
+  "ourMission": "Vår misjon",
+  "ourMissionDescription": "Med Adept™ far du full kontroll over alt regelverk selskapet mả forholde seg til slik at du enkelt kan ivareta dette i daglig drift",
+  "ourVision": "La AI gjøre en betydelig del av jobben",
+  "ourVisionDescription": "Med AI har vi nå tatt skrittet opp enda en divisjon. <br /><br /> Vi har nå integrert AI i Adept™ gjennom utvikling av «Adept™ AI Engine». Løsningen er utviklet i nært samarbeid med <u>Webstep</u> og er allerede i bruk hos noen av våre kunder. Kort fortalt så utvider «Adept™ AI Engine» løsningen fra å være et verktøy for samsvarsstyring til også å faktisk gjøre en betydelig del av samsvarsarbeidet.<br /><br />Forklaringen på denne suksessen er at vi har, med tillatelse av våre kunder, kunne utvikle vår AI-algoritme basert på høykvalitets Adept™ data fra mange år tilbake. Løsningen er derfor ikke bare «språkmodell»-basert, men også i stor grad «kunnskaps»-basert.<br />Vi gleder oss til å videreutvikle løsningen i samarbeid med <u>Webstep</u> og de nye mulighetene vi vet kommer.",
+  "ourValues": "Styringssystem og compliance",
+  "ourValuesDescription": "Vi er til for selskaper som har behov for assistanse til å etablere et effektivt system for regelverksoppfølging. Vår løsning er til for selskaper som ser at det å integrere regelverksoppfølging i daglig drift inngir tillit overfor både egne medarbeidere og eksterne berørte parter.",
+  "ourCustomers": "Våre kunder",
+  "ourCustomersDescription": "Felles for alle våre kunder er et erkjent behov for og et ønske om å etablere et effektivt system for regelverksoppfølging, som sikrer samsvar og etterlevelse, samt inngir tillit overfor både egne medarbeidere og eksterne berørte parter. Våre kunder innser at god styring med regelverket bidrar både til reduserte kostnader og bedre konkurranseevne, og er en forutsetning for fremtidig konkurransekraft.",
+  "documents": "Dokumenter",
+  "documentsDescription": "Vi har et omfattende bibliotek av lover, forskrifter og standarder, og vi hjelper dere til å få inn det dere trenger av andre dokumenter i løsningen. Vi importerer direkte fra flere utgivere og vi har gode løsninger for å legge inn fra Pdf, Word og en rekke andre formater.*",
+  "documentsInfo": "* Vi importerer dokumenter direkte fra blant annet Loudata, Standard Norge og DNV. Vi laster også opp dokumenter fra andre utgivere, forutsatt at en gyldig lisens er på plass.",
+  "ourPartners": "Våre partnere",
+  "ourPartnersDescription": "Vi har dyktige samarbeidspartnere som kan assistere med alt fra tolkning av regelverk til styringssystem og samsvarsmålinger.",
+  "customerTestimonials": "Kundeuttalelser",
+  "customerTitle": "Kunde",
+  "customers": [
+    {
+      "title": "Unik og brukervennlig funksjonlitet",
+      "description": "Siden innføringen av Adept Concept i Skanska Norge i 2017 har vi aldri sett oss tilbake. Vi har stor nytte av verktøyet i vår samsvarsstyring både mot lov/forskriftskrav, standarder og mot interne selskapskrav fra morselskapet. Vi benytter Adept Concept aktivt i våre governance-prosesser mot selskapets hovedkontor i Stockholm.<br /><br />Funksjonaliteten er brukervennlig og har ført til at vi har en langt mer distribuert og mer effektiv samsvarskontroll som involverer mange fagmiljøer i selskapet. Funksjonaliteten for sammenligningen mellom tidligere og nye versjoner er unik og har vakt oppsikt i Skanska internasjonalt.",
+      "name": "Peer Chr. Anderssen",
+      "role": "Direktør HMS, Kvalitet og Seriøsitet",
+      "company": "Skanska Norge",
+      "image": "skanska"
+    },
+    {
+      "title": "Løser en nærmest uoverkommelig oppgave",
+      "description": "ABB har i flere år benyttet Adept™ som verktøy for oppfølging av compliance, med fokus på området rundt HMS og ytre miljø siden 2011. Uten den støtten som verktøyet gir ville det vært en nærmest uoverkommelig oppgave å orientere seg i hvilke lover og forskrifter som til enhver tid blir endret eller oppdatert, men gjennom varsling og overvåking samt fremheving av endringer blir dette nå håndtert på en hensiktsmessig og enkel måte.",
+      "name": "Bjarte Olsen",
+      "role": "Country Quality & Continuous Improvement Manager",
+      "company": "MO Digital Lead",
+      "image": "abb"
+    },
+    {
+      "title": "Enkel dokumentasjon av samsvar",
+      "description": "IMC Diving AS har benyttet Adept™ for samsvarsstyring i ca 10 år. Vi er serifisert i henhold til ISO 9001 og 14001, og med Adept™ har det vært en enkel sak å dokumentere samsvar både mot krav i ISO 9001, ISO 14001, myndighetskrav og kundekrav i hele denne perioden.<br /><br />Fokuset på dokumentert etterlevelse av krav er økende, men vi opplever at dette er lett å imøtekomme, ikke minst etter at Adept™ introduserte “Update Centre”, der vi enkelt kan oppdatere vårt styringssystem ved regelverksendringer.<br /><br />Oversiktlige og tilltsvekkende rapporter gjør det lett å dokumentere samsvar overfor eksterne parter.",
+      "name": "Linda Nord Kristiansen",
+      "role": "Kvalitetsleder",
+      "company": "IMC Diving AS",
+      "image": "imc"
+    },
+    {
+      "title": "Setting new standards",
+      "description": "Getting four new, state of the art, Jack-up new buildings successfully introduced to, and into operation on the Norwegian Continental Shelf, requires a very structured, solid and trustworthy AoC (Acknowledgement of Compliance) process towards and with the authorities.<br /><br />Even though an AoC process has a lot of repeated and similar activities included, it is for MDN of great importance to ensure- and provide evidence, that our verification process is of an individual and independent character. Obtaining and keeping track of compliance for +12,000 different legislation requirements in an AoC process is a huge task to overcome.<br /><br />With Adept™, being our main tool for performing both Technical-and Operational compliance verifications, we believe we have achieved both a more systematic (aligned across units), consistent (fixed methodology) and maybe most important and sustainable approach to the process and subsequent maintenance and follow up of the AoC, then we had before - This is something which all units in the MDN fleet are benefitting from today.<br /><br />Working with Adept™ is a pleasure. Always professional attendance to challenges we have faced in the process, fast support at all times and a constant vigilant and innovative approach to problem solving. No challenge seems unsolvable for Adept™ and it has been gratifying for MDN to observe and benefit from the constant attempts to improve the portfolio of services included in Adept™™.<br /><br />Both the 'Update Center' and the GAP module for performing internal GAP analysis have created further sustainability.",
+      "name": "Glenn Gormsen",
+      "role": "Compliance manager",
+      "company": "Maersk Drilling Norge AS",
+      "image": "maersk"
+    }
+  ],
+  "contactUs": "Kontakt oss",
+  "contactFormTile": "Kontakt oss for en gratis og uforpliktende demo!",
+  "formName": "Navn",
+  "formEmail": "E-post",
+  "formMessage": "Melding",
+  "formSubmit": "Send",
+  "formInfoPhone": "Dersom du foretrekker å ta en uformell prat på telefon kan vi nås på:",
+  "formInfoEmail": "Eventuelt kan du sende oss en e-post på"
+}
