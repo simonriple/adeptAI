@@ -12,7 +12,7 @@ export const LanguageSwitcherComponent: FunctionComponent = () => {
     });
   ;
 }
-console.log(100, i18n);
+
   return (
     <div>
     <LanguageSwitcherStyled onClick={() => changeLanguage(i18n.language === 'en' ? 'nb' : 'en')}>
