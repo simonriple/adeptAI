@@ -13,6 +13,7 @@ import { ContactContainerStyled, ContactFormErrorMessageStyled, ContactFormInfoS
 
 import { HomePageProps } from '../types';
 import { DarkModeSwitcherComponent, LanguageSwitcherComponent } from '../components';
+import { useIsMobile } from '../helpers';
 
 const CUSTOMERS = [
   {
@@ -145,6 +146,8 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 	const { t } = useTranslation();
   const customers = t('customers', { returnObjects: true });
   const ourStoryRef = useRef(null);
+
+  const isMobile = useIsMobile();
   
   const PinComponent = () => <div style={{
     color: 'white',
@@ -194,13 +197,13 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
       <ContainerStyled>
         <WrapperStyled>
           <HeroLeftStyled>
-            <Parallax speed={100} translateY={['0', '1000%']} opacity={[1, 0]} shouldAlwaysCompleteAnimation startScroll={0}>
+            <Parallax disabled={isMobile} speed={100} translateY={['0', '1000%']} opacity={[1, 0]} shouldAlwaysCompleteAnimation startScroll={0}>
               <HeroSubTileStyled>{t('heroSubTile')}</HeroSubTileStyled>
             </Parallax>
-            <Parallax translateY={['0', '20%']} shouldAlwaysCompleteAnimation startScroll={0}>
+            <Parallax disabled={isMobile} translateY={['0', '20%']} shouldAlwaysCompleteAnimation startScroll={0}>
               <HeroTileStyled dangerouslySetInnerHTML={{ __html: t('heroTitle') }} />
             </Parallax>
-            <Parallax speed={-100} translateY={['0', '-50%']} opacity={[1, -1]} shouldAlwaysCompleteAnimation >
+            <Parallax disabled={isMobile} speed={-100} translateY={['0', '-50%']} opacity={[1, -1]} shouldAlwaysCompleteAnimation >
               {/* @ts-ignore */}
               <ScrolDownStyled onClick={() => ourStoryRef.current.scrollIntoView({ behavior: 'smooth' })}>
                 <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -243,7 +246,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
         <WrapperStyled>
           <OurMissionLeftStyled>
             <h4>{t('ourMission')}</h4>
-            <Parallax translateY={['0', '20%']} shouldAlwaysCompleteAnimation startScroll={0}>
+            <Parallax disabled={isMobile} translateY={['0', '20%']} shouldAlwaysCompleteAnimation startScroll={0}>
               <OurMissionLeftWrapperStyled>
                 <Image
                   src="/images/mission.jpeg"
@@ -255,7 +258,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
             </Parallax>
           </OurMissionLeftStyled>
             <OurMissionRightStyled>
-              <Parallax translateY={['0', '40%']} shouldAlwaysCompleteAnimation startScroll={0}>
+              <Parallax disabled={isMobile} translateY={['0', '40%']} shouldAlwaysCompleteAnimation startScroll={0}>
                 <h4>{t('ourMission')}</h4>
                 <p>{t('ourMissionDescription')}</p>
               </Parallax>
@@ -411,14 +414,14 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
       <ContainerStyled>
         <WrapperStyled>
           <OurValuesLeftStyled>
-            <Parallax translateY={['0', '30%']} shouldAlwaysCompleteAnimation startScroll={0}>
+            <Parallax disabled={isMobile} translateY={['0', '30%']} shouldAlwaysCompleteAnimation startScroll={0}>
               <h4>{t('ourValues')}</h4>
               <p>{t('ourValuesDescription')}</p>
             </Parallax>
           </OurValuesLeftStyled>
           <OurValuesRightStyled>
             <h4>{t('ourValues')}</h4>
-              <Parallax translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
+              <Parallax disabled={isMobile} translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
                 <OurCustomersLeftWrapperStyled>
                   <Image
                     src="/images/values.jpeg"

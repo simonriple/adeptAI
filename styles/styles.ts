@@ -45,6 +45,10 @@ export const HeaderBarStyled = styled.div`
 	& > * {
 		padding-left: 2.4rem;
 
+		@media screen and (max-width: 768px) {
+			padding-left: 1.2rem;
+		}
+
 		svg {
 			width: 2.4rem;
 			fill: ${({ theme }) => theme.fill};
@@ -287,6 +291,8 @@ export const OurStoryLeftStyled = styled.div`
 
 		@media screen and (max-width: 768px) {
 			padding-bottom: 3.2rem;
+			position: relative;
+			top: 0;
 			/* top: 11.7rem; */
 		}
 	}
@@ -491,6 +497,8 @@ export const OurVisionLeftWrappStyled = styled.div`
 		max-width: 40rem;
 		margin: 0 auto;
 		padding-bottom: 6.8rem;
+		position: relative;
+		top: 0;
 	}
 `;
 
@@ -618,6 +626,8 @@ export const OurCustomersLeftStyled = styled.div`
 
 		@media screen and (max-width: 768px) {
 			padding-bottom: 3.2rem;
+			position: relative;
+			top: 0;
 		}
 	}
 `;
@@ -1026,7 +1036,9 @@ export const TestimonialsElementLeftStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-		padding-bottom: 3.2rem;
+		padding-bottom: 2.2rem;
+		position: relative;
+		top: 0;
 		/* top: 11.7rem; */
 	}
 	
@@ -1035,6 +1047,10 @@ export const TestimonialsElementLeftStyled = styled.div`
 		line-height: 3.2rem;
 		font-family: 'NeutralMono', sans-serif;
 		padding-bottom: 2.4rem;
+
+		@media screen and (max-width: 768px) {
+			padding-bottom: 1rem;
+		}
 	}
 `;
 
@@ -1252,6 +1268,8 @@ export const ContactRightStyled = styled.div`
 	@media screen and (max-width: 768px) {
 		width: 100%;
 		padding-left: 0;
+		position: relative;
+		top: 0;
 	}
 
 	h5 {
