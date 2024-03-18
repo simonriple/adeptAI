@@ -28,6 +28,9 @@ export const lightTheme = {
 		sand: sand,
 		red: red,
 		fill: gray16,
+	},
+	alternatives: {
+		formWhitetoSand: whiteSmoke,
 	}
 };
 
@@ -53,5 +56,8 @@ export const darkTheme = {
 		sand: sand,
 		red: red,
 		fill: gray16,
+	},
+	alternatives: {
+		formWhitetoSand: sand,
 	}
 };

@@ -48,10 +48,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 10px;
-
-    @media screen and (min-width: 1900px) {
-      font-size: 15px;
-    }
   }
 
   html,

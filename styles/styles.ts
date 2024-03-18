@@ -4,53 +4,32 @@ interface ContainerStyledProps {
 	appearance?: 'sand' | 'text';
 }
 
+interface HeaderStyledProps {
+	hasScrolling: boolean;
+}
+
+interface HeaderBarProps {
+	hasScrolling: boolean;
+}
+
 interface WrapperStyledProps {
 	wide?: boolean;
 }
 
-export const HeaderStyled = styled.header`
-	padding: 6.4rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	background-color: ${({ theme }) => theme.body};
-	z-index: 100;
-
-	@media screen and (max-width: 1240px) {
-		padding: 3.2rem;
-	}
-	@media screen and (max-width: 768px) {
-		padding: 4rem 1.6rem;
-	}
-
-	div + div {
-		padding-left: 2.4rem;
-	}
-
-	svg {
-		width: 13.7rem;
-		height: 3.2rem;
-		fill: ${({ theme }) => theme.orange};
-	}
-`;
-
-export const HeaderBarStyled = styled.div`
+export const HeaderBarStyled = styled.div<HeaderBarProps>`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 
 	& > * {
-		padding-left: 2.4rem;
+		padding-left: ${({ hasScrolling }) => hasScrolling ? '1.2rem'	: '2.4rem'};
 
 		@media screen and (max-width: 768px) {
 			padding-left: 1.2rem;
 		}
 
 		svg {
-			width: 2.4rem;
+			width: ${({ hasScrolling }) => hasScrolling ? '2rem'	: '2.4rem'};
 			fill: ${({ theme }) => theme.fill};
 		}
 
@@ -60,7 +39,6 @@ export const HeaderBarStyled = styled.div`
 			}
 
 			svg {
-				/* transition: fill 0.1s ease; */
 				fill: ${({ theme }) => theme.hover.fill};
 				transition-delay: 0 !important;
 			}
@@ -68,18 +46,53 @@ export const HeaderBarStyled = styled.div`
 	}
 `;
 
+export const HeaderStyled = styled.header<HeaderStyledProps>`
+	/* padding: 6.4rem; */
+	padding: 3.2rem 6.4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background-color: ${({ theme }) => theme.body};
+	z-index: 100;
+
+	padding: ${({ hasScrolling }) => hasScrolling ? '2.2rem 6.4rem'	: '3.2rem 6.4rem'};
+
+	@media screen and (max-width: 1240px) {
+		padding: ${({ hasScrolling }) => hasScrolling ? '2.2rem 3.2rem'	: '3.2rem'};
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: ${({ hasScrolling }) => hasScrolling ? '1.6rem'	: '3rem 1.6rem'};
+	}
+
+	div + div {
+		padding-left: 2.4rem;
+	}
+
+	h1 svg {
+		width: ${({ hasScrolling }) => hasScrolling ? '10rem'	: '13.7rem'};
+		/* width: 13.7rem; */
+		height: 3.2rem;
+		fill: ${({ theme }) => theme.orange};
+	}
+`;
+
 export const HeaderLoginInStyled = styled.div``;
 // 1
 export const HeroStyled = styled.div`
 	/* height: calc(100vh - 10.1rem); */
-	padding-top: 16.5rem;
+	/* padding-top: 16.5rem; */
+	padding-top: 10rem;
 
 	@media screen and (max-width: 1240px) {
 		padding-top: 10rem;
 	}
 
 	@media screen and (max-width: 768px) {
-		padding-top: 11.7rem;
+		padding-top: 9.6rem;
 	}
 `;
 
@@ -340,7 +353,8 @@ export const OurMissionStyled = styled.div`
 	}
 
 	p {
-		font-size: 4rem;
+		/* font-size: 4rem; */
+		font-size: 3.2rem;
 		line-height: 5.6rem;
 		font-family: 'Slim', sans-serif;
 
@@ -524,7 +538,8 @@ export const OurValuesStyled = styled.div`
 	}
 
 	p {
-		font-size: 4rem;
+		/* font-size: 4rem; */
+		font-size: 3.2rem;
 		line-height: 5.6rem;
 		font-family: 'Slim', sans-serif;
 
@@ -640,7 +655,8 @@ export const OurCustomersRightStyled = styled.div`
 	}
 
 	p {
-		font-size: 4rem;
+		/* font-size: 4rem; */
+		font-size: 3.2rem;
 		line-height: 5.6rem;
 		font-family: 'Slim', sans-serif;
 
@@ -654,20 +670,32 @@ export const OurCustomersRightStyled = styled.div`
 
 // 6
 export const OurCustomersStyled = styled.div`
-	padding: 0 0 24rem;
+	padding: 0 0 12rem;
 
 	@media screen and (max-width: 1240px) {
-		padding: 0 0 12rem;
+		padding: 0 0 6rem;
 	}
 
 	@media screen and (max-width: 768px) {
 		/* padding: 12.8rem 0; */
-		padding: 0 0 6.4rem;
+		padding: 0 0 3.2rem;
 	}
 `;
 
 // 7
-export const CustomersStyled = styled.div``;
+export const CustomersStyled = styled.div`
+	padding: 12rem 0;
+	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
+
+	@media screen and (max-width: 1240px) {
+		padding: 6rem 0;
+	}
+
+	@media screen and (max-width: 768px) {
+		/* padding: 12.8rem 0; */
+		padding: 3.2rem 0;
+	}
+`;
 
 export const OurCustomersGrid = styled.ul`
 	list-style: none;
@@ -701,15 +729,15 @@ export const OurCustomersItem = styled.li`
 
 // 8
 export const DocumentsStyled = styled.div`
-	padding: 24rem 0;
+	padding: 12rem 0 24rem;
 
 	@media screen and (max-width: 1240px) {
-		padding: 12rem 0;
+		padding: 6rem 0 12rem;
 	}
 
 	@media screen and (max-width: 768px) {
 		/* padding: 12.8rem 0; */
-		padding: 6.4rem 0;
+		padding: 3.2rem 0 6.4rem;
 	}
 
 	h4 {
@@ -725,7 +753,8 @@ export const DocumentsStyled = styled.div`
 	}
 
 	p {
-		font-size: 4rem;
+		/* font-size: 4rem; */
+		font-size: 3.2rem;
 		line-height: 5.6rem;
 		font-family: 'Slim', sans-serif;
 

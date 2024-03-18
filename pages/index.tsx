@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -143,6 +143,8 @@ const defaultProps = {
 };
 
 const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
 	const { t } = useTranslation();
   const customers = t('customers', { returnObjects: true });
   const ourStoryRef = useRef(null);
@@ -165,8 +167,21 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
     recaptcha: Yup.string().required('Please verify that you are not a robot'),
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 	return <>
-    <HeaderStyled>
+    <HeaderStyled hasScrolling={isScrolled}>
       <h1>
         <svg viewBox="0 0 137 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M124.79 7.74831H126.389V11.1273H127.782V7.74831H129.382V6.49683H124.79V7.74831Z"/>
@@ -180,7 +195,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
           <path d="M72.4122 20.8835H57.8351C56.687 20.8835 55.7511 19.9531 55.7511 18.7995V13.1842C55.7511 12.0415 56.6761 11.1165 57.8187 11.1165H70.2357L72.4122 6.50775H56.3442C52.7529 6.50775 49.8364 9.41882 49.8364 13.0155V18.9791C49.8364 22.5758 52.7529 25.4923 56.3496 25.4923H72.4122V20.8835Z"/>
         </svg>
       </h1>
-      <HeaderBarStyled>
+      <HeaderBarStyled hasScrolling={isScrolled}>
         <LanguageSwitcherComponent />
         <DarkModeSwitcherComponent onChange={themeToggler} name={themeName}/>
         <HeaderLoginInStyled>
