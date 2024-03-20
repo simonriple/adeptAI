@@ -643,7 +643,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                     <Formik
                       initialValues={{ contactFormName: '', contactFormEmail: '', contactFormMessage: '', recaptcha: '' }}
                       validationSchema={validationSchema}
-                      onSubmit={(values, { setSubmitting }) => {
+                      onSubmit={(values, { setSubmitting, resetForm }) => {
                         send(
                           'AdeptSMTPService',
                           'AdeptWebFeedback',
@@ -654,6 +654,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                           console.log('SUCCESS!', response.status, response.text);
                           setSubmitting(false);
                           setMessageSent(true);
+                          resetForm();
                         })
                         .catch(err => {
                           console.log('FAILED...', err);
