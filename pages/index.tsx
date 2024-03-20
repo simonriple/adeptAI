@@ -8,6 +8,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Parallax } from 'react-scroll-parallax';
+import { send } from '@emailjs/browser';
 
 import { ContactContainerStyled, ContactFormErrorMessageStyled, ContactFormInfoStyled, ContactFormWrapperStyled, ContactLeftStyled, ContactMapWrapperStyled, ContactRightStyled, ContactStyled, ContactTitleWrapperStyled, ContactWrapperStyled, ContainerStyled, CustomersStyled, DocumentsGrid, DocumentsItem, DocumentsLeftStyled, DocumentsLeftWrapperStyled, DocumentsRightStyled, DocumentsStyled, HeaderBarStyled, HeaderLoginInStyled, HeaderStyled, HeroLeftStyled, HeroRightStyled, HeroRightWrapperStyled, HeroStyled, HeroSubTileStyled, HeroTileStyled, OurCustomersGrid, OurCustomersItem, OurCustomersLeftStyled, OurCustomersLeftWrapperStyled, OurCustomersRightStyled, OurCustomersStyled, OurMissionLeftStyled, OurMissionLeftWrapperStyled, OurMissionRightStyled, OurMissionStyled, OurPartnersGrid, OurPartnersItem, OurPartnersStyled, OurPartnersWrapperStyled, OurStoryLeftStyled, OurStoryRightStyled, OurStoryStyled, OurValuesLeftStyled, OurValuesRightStyled, OurValuesStyled, OurVisionLeftStyled, OurVisionLeftWrappStyled, OurVisionRightStyled, OurVisionStyled, ScrolDownStyled, TestimonialsElementLeftStyled, TestimonialsElementRightStyled, TestimonialsElementStyled, TestimonialsElementWrapperStyled, TestimonialsInfoStyled, TestimonialsListStyled, TestimonialsStyled, WrapperStyled } from '../styles/styles';
 
@@ -609,7 +610,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                 <ContactLeftStyled>
                   <ContactMapWrapperStyled>
                     <GoogleMapReact
-                      bootstrapURLKeys={{ key: "" }}
+                      bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? '' }}
                       defaultCenter={defaultProps.center}
                       defaultZoom={defaultProps.zoom}
                     >
@@ -625,6 +626,20 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                       initialValues={{ name: '', email: '', message: '', recaptcha: '' }}
                       validationSchema={validationSchema}
                       onSubmit={(values, { setSubmitting }) => {
+                        send(
+                          'AdeptSMTPService',
+                          'AdeptWebFeedback',
+                          values,
+                          process.env.NEXT_PUBLIC_EMAILJS_KEY ?? ''
+                        )
+                        .then(response => {
+                          console.log('SUCCESS!', response.status, response.text);
+                          setSubmitting(false);
+                        })
+                        .catch(err => {
+                          console.log('FAILED...', err);
+                          setSubmitting(false);
+                        });
                         setTimeout(() => {
                           alert(JSON.stringify(values, null, 2));
                           setSubmitting(false);
@@ -633,23 +648,26 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                     >
                       {({ isSubmitting, setFieldValue }) => (
                         <Form>
-                          <Field type="text" name="name" placeholder={t('formName')} />
                           <ContactFormErrorMessageStyled>
                             <ErrorMessage name="name" component="div" />
                           </ContactFormErrorMessageStyled>
+                          <Field type="text" name="name" placeholder={t('formName')} />
 
-                          <Field type="email" name="email" placeholder={t('formEmail')} />
                           <ContactFormErrorMessageStyled>
                             <ErrorMessage name="email" component="div" />
                           </ContactFormErrorMessageStyled>
+                          <Field type="email" name="email" placeholder={t('formEmail')} />
 
-                          <Field as="textarea" name="message" placeholder={t('formMessage')} />
                           <ContactFormErrorMessageStyled>
                             <ErrorMessage name="message" component="div" />
                           </ContactFormErrorMessageStyled>
+                          <Field as="textarea" name="message" placeholder={t('formMessage')} />
 
+                          <ContactFormErrorMessageStyled>
+                            <ErrorMessage name="recaptcha" component="div" />
+                          </ContactFormErrorMessageStyled>
                           <ReCAPTCHA
-                            sitekey="Your client site key"
+                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY ?? ''}
                             onChange={(value) => {
                               setFieldValue('recaptcha', value);
                             }}

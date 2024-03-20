@@ -82,7 +82,7 @@ export const HeaderStyled = styled.header<HeaderStyledProps>`
 
 export const HeaderLoginInStyled = styled.div``;
 // 1
-export const HeroStyled = styled.div`
+export const HeroStyled = styled.section`
 	/* height: calc(100vh - 10.1rem); */
 	/* padding-top: 16.5rem; */
 	padding-top: 10rem;
@@ -271,7 +271,7 @@ export const ScrolDownStyled = styled.button`
 
 
 // 2
-export const OurStoryStyled = styled.div`
+export const OurStoryStyled = styled.section`
 	padding-top: 20rem;
 
 	@media screen and (max-width: 1024px) {
@@ -334,7 +334,7 @@ export const OurStoryRightStyled = styled.div`
 
 
 // 3
-export const OurMissionStyled = styled.div`
+export const OurMissionStyled = styled.section`
 	padding: 20rem 0;
 
 	@media screen and (max-width: 1024px) {
@@ -425,7 +425,7 @@ export const OurMissionLeftWrapperStyled = styled.div`
 `;
 
 // 4
-export const OurVisionStyled = styled.div`
+export const OurVisionStyled = styled.section`
 	h4 {
 		font-size: 4.8rem;
 		line-height: 5.6rem;
@@ -517,7 +517,7 @@ export const OurVisionLeftWrappStyled = styled.div`
 `;
 
 // 5
-export const OurValuesStyled = styled.div`
+export const OurValuesStyled = styled.section`
 	padding: 24rem 0;
 
 	@media screen and (max-width: 1240px) {
@@ -669,7 +669,7 @@ export const OurCustomersRightStyled = styled.div`
 `;
 
 // 6
-export const OurCustomersStyled = styled.div`
+export const OurCustomersStyled = styled.section`
 	padding: 0 0 12rem;
 
 	@media screen and (max-width: 1240px) {
@@ -683,7 +683,7 @@ export const OurCustomersStyled = styled.div`
 `;
 
 // 7
-export const CustomersStyled = styled.div`
+export const CustomersStyled = styled.section`
 	padding: 12rem 0;
 	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
 
@@ -728,16 +728,21 @@ export const OurCustomersItem = styled.li`
 `;
 
 // 8
-export const DocumentsStyled = styled.div`
-	padding: 12rem 0 24rem;
+export const DocumentsStyled = styled.section`
+	padding: 12rem 0;
+	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
 
 	@media screen and (max-width: 1240px) {
-		padding: 6rem 0 12rem;
+		padding: 6rem 0;
 	}
 
 	@media screen and (max-width: 768px) {
 		/* padding: 12.8rem 0; */
-		padding: 3.2rem 0 6.4rem;
+		padding: 3.2rem 0;
+	}
+
+	h4, p, span {
+		color: ${({ theme }) => theme.original.text};
 	}
 
 	h4 {
@@ -880,7 +885,7 @@ export const DocumentsLeftWrapperStyled = styled.div`
 `;
 
 // 9
-export const OurPartnersStyled = styled.div`
+export const OurPartnersStyled = styled.section`
 	${WrapperStyled} {
 		padding-top: 19rem;
 		padding-bottom: 19rem;
@@ -975,16 +980,21 @@ export const OurPartnersItem = styled.li`
 
 // 9
 
-export const TestimonialsStyled = styled.div`
-	padding: 24rem 0;
+export const TestimonialsStyled = styled.section`
+	padding: 24rem 0 12rem;
+	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
 
 	@media screen and (max-width: 1240px) {
-		padding: 12rem 0;
+		padding: 12rem 0 6rem;
 	}
 
 	@media screen and (max-width: 768px) {
 		/* padding: 12.8rem 0; */
-		padding: 6.4rem 0;
+		padding: 6.4rem 0 3.2rem,;
+	}
+
+	h4, h5, p, span {
+		color: ${({ theme }) => theme.original.text};
 	}
 
 	h4 {
@@ -1133,16 +1143,16 @@ export const TestimonialsInfoStyled = styled.div`
 `;
 
 // 10
-export const ContactStyled = styled.div`
-	padding: 0 0 24rem;
+export const ContactStyled = styled.section`
+	padding: 12rem 0;
 
 	@media screen and (max-width: 1240px) {
-		padding: 0 0 12rem;
+		padding: 6rem 0;
 	}
 
 	@media screen and (max-width: 768px) {
 		/* padding: 0 0 12.8rem; */
-		padding: 0 0 6.4rem;
+		padding: 3.2rem 0;
 	}
 
 	h4 {
@@ -1280,7 +1290,7 @@ export const ContactFormErrorMessageStyled = styled.div`
 	color: ${({ theme }) => theme.red};
 	font-family: 'Median', sans-serif;
 	font-size: 1.2rem;
-	padding-bottom: 0.5rem;
+	padding-bottom: 1rem;
 `;
 
 export const ContactRightStyled = styled.div`
