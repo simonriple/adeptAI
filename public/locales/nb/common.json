@@ -60,5 +60,6 @@
   "formMessage": "Melding",
   "formSubmit": "Send",
   "formInfoPhone": "Dersom du foretrekker å ta en uformell prat på telefon kan vi nås på:",
-  "formInfoEmail": "Eventuelt kan du sende oss en e-post på"
+  "formInfoEmail": "Eventuelt kan du sende oss en e-post på",
+  "formMessageSent": "Din melding har blitt sendt!"
 }

@@ -60,5 +60,6 @@
   "formMessage": "Message",
   "formSubmit": "Send",
   "formInfoPhone": "If you prefer to have an informal chat by phone, we can be reached on:",
-  "formInfoEmail": "Alternatively, you can send us an email at"
+  "formInfoEmail": "Alternatively, you can send us an email at",
+  "formMessageSent": "Your message has been sent!"
 }

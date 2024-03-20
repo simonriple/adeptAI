@@ -16,6 +16,10 @@ interface WrapperStyledProps {
 	wide?: boolean;
 }
 
+interface ContactFormMessageSentProps {
+	show: boolean;
+}
+
 export const HeaderBarStyled = styled.div<HeaderBarProps>`
 	display: flex;
 	justify-content: flex-end;
@@ -1284,6 +1288,10 @@ export const ContactFormInfoStyled = styled.div`
 	a {
 		color: ${({ theme }) => theme.orange};
 	}
+
+	form {
+		position: relative;
+	}
 `;
 
 export const ContactFormErrorMessageStyled = styled.div`
@@ -1292,6 +1300,7 @@ export const ContactFormErrorMessageStyled = styled.div`
 	font-size: 1.2rem;
 	padding-bottom: 1rem;
 `;
+
 
 export const ContactRightStyled = styled.div`
 	width: 50%;
@@ -1328,4 +1337,27 @@ export const ContactRightStyled = styled.div`
 			padding-top: 0;
 		}
 	}
+`;
+
+export const ContactFormMessageSentStyled = styled.div<ContactFormMessageSentProps>`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: ${({ theme }) => theme.body};
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Median', sans-serif;
+	font-size: 2.4rem;
+	line-height: 3.2rem;
+	padding: 1rem;
+	text-align: center;
+	color: #2db83d;
+	opacity: ${({ show }) => show ? 1 : 0};
+	pointer-events: ${({ show }) => show ? 'auto' : 'none'};
+	visibility: ${({ show }) => show ? 'visible' : 'hidden'};
+	transition: all 0.3s ease-in-out;
 `;

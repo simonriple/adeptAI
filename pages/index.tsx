@@ -10,7 +10,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { Parallax } from 'react-scroll-parallax';
 import { send } from '@emailjs/browser';
 
-import { ContactContainerStyled, ContactFormErrorMessageStyled, ContactFormInfoStyled, ContactFormWrapperStyled, ContactLeftStyled, ContactMapWrapperStyled, ContactRightStyled, ContactStyled, ContactTitleWrapperStyled, ContactWrapperStyled, ContainerStyled, CustomersStyled, DocumentsGrid, DocumentsItem, DocumentsLeftStyled, DocumentsLeftWrapperStyled, DocumentsRightStyled, DocumentsStyled, HeaderBarStyled, HeaderLoginInStyled, HeaderStyled, HeroLeftStyled, HeroRightStyled, HeroRightWrapperStyled, HeroStyled, HeroSubTileStyled, HeroTileStyled, OurCustomersGrid, OurCustomersItem, OurCustomersLeftStyled, OurCustomersLeftWrapperStyled, OurCustomersRightStyled, OurCustomersStyled, OurMissionLeftStyled, OurMissionLeftWrapperStyled, OurMissionRightStyled, OurMissionStyled, OurPartnersGrid, OurPartnersItem, OurPartnersStyled, OurPartnersWrapperStyled, OurStoryLeftStyled, OurStoryRightStyled, OurStoryStyled, OurValuesLeftStyled, OurValuesRightStyled, OurValuesStyled, OurVisionLeftStyled, OurVisionLeftWrappStyled, OurVisionRightStyled, OurVisionStyled, ScrolDownStyled, TestimonialsElementLeftStyled, TestimonialsElementRightStyled, TestimonialsElementStyled, TestimonialsElementWrapperStyled, TestimonialsInfoStyled, TestimonialsListStyled, TestimonialsStyled, WrapperStyled } from '../styles/styles';
+import { ContactContainerStyled, ContactFormErrorMessageStyled, ContactFormInfoStyled, ContactFormMessageSentStyled, ContactFormWrapperStyled, ContactLeftStyled, ContactMapWrapperStyled, ContactRightStyled, ContactStyled, ContactTitleWrapperStyled, ContactWrapperStyled, ContainerStyled, CustomersStyled, DocumentsGrid, DocumentsItem, DocumentsLeftStyled, DocumentsLeftWrapperStyled, DocumentsRightStyled, DocumentsStyled, HeaderBarStyled, HeaderLoginInStyled, HeaderStyled, HeroLeftStyled, HeroRightStyled, HeroRightWrapperStyled, HeroStyled, HeroSubTileStyled, HeroTileStyled, OurCustomersGrid, OurCustomersItem, OurCustomersLeftStyled, OurCustomersLeftWrapperStyled, OurCustomersRightStyled, OurCustomersStyled, OurMissionLeftStyled, OurMissionLeftWrapperStyled, OurMissionRightStyled, OurMissionStyled, OurPartnersGrid, OurPartnersItem, OurPartnersStyled, OurPartnersWrapperStyled, OurStoryLeftStyled, OurStoryRightStyled, OurStoryStyled, OurValuesLeftStyled, OurValuesRightStyled, OurValuesStyled, OurVisionLeftStyled, OurVisionLeftWrappStyled, OurVisionRightStyled, OurVisionStyled, ScrolDownStyled, TestimonialsElementLeftStyled, TestimonialsElementRightStyled, TestimonialsElementStyled, TestimonialsElementWrapperStyled, TestimonialsInfoStyled, TestimonialsListStyled, TestimonialsStyled, WrapperStyled } from '../styles/styles';
 
 import { HomePageProps } from '../types';
 import { DarkModeSwitcherComponent, LanguageSwitcherComponent } from '../components';
@@ -145,6 +145,7 @@ const defaultProps = {
 
 const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
 
 	const { t } = useTranslation();
   const customers = t('customers', { returnObjects: true });
@@ -162,9 +163,9 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
   }}/>;
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email address').required('Required'),
-    message: Yup.string().required('Required'),
+    contactFormName: Yup.string().required('Required'),
+    contactFormEmail: Yup.string().email('Invalid email address').required('Required'),
+    contactFormMessage: Yup.string().required('Required'),
     recaptcha: Yup.string().required('Please verify that you are not a robot'),
   });
 
@@ -180,6 +181,23 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    let timerId: NodeJS.Timeout;
+
+    if (messageSent) {
+      timerId = setTimeout(() => {
+        setMessageSent(false);
+      }, 10000);
+    }
+
+    // Clear the timer when the component unmounts
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, [messageSent]);
 
 	return <>
     <HeaderStyled hasScrolling={isScrolled}>
@@ -623,7 +641,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                   <h5>{t('contactFormTile')}</h5>
                   <ContactFormWrapperStyled>
                     <Formik
-                      initialValues={{ name: '', email: '', message: '', recaptcha: '' }}
+                      initialValues={{ contactFormName: '', contactFormEmail: '', contactFormMessage: '', recaptcha: '' }}
                       validationSchema={validationSchema}
                       onSubmit={(values, { setSubmitting }) => {
                         send(
@@ -635,33 +653,37 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
                         .then(response => {
                           console.log('SUCCESS!', response.status, response.text);
                           setSubmitting(false);
+                          setMessageSent(true);
                         })
                         .catch(err => {
                           console.log('FAILED...', err);
                           setSubmitting(false);
                         });
-                        setTimeout(() => {
-                          alert(JSON.stringify(values, null, 2));
-                          setSubmitting(false);
-                        }, 400);
+                        // setTimeout(() => {
+                        //   console.log(1, values);
+                        //   setSubmitting(false);
+                        // }, 400);
                       }}
                     >
                       {({ isSubmitting, setFieldValue }) => (
                         <Form>
+                          <ContactFormMessageSentStyled show={messageSent}>
+                            {t('formMessageSent')}
+                          </ContactFormMessageSentStyled>
                           <ContactFormErrorMessageStyled>
-                            <ErrorMessage name="name" component="div" />
+                            <ErrorMessage name="contactFormName" component="div" />
                           </ContactFormErrorMessageStyled>
-                          <Field type="text" name="name" placeholder={t('formName')} />
+                          <Field type="text" name="contactFormName" placeholder={t('formName')} />
 
                           <ContactFormErrorMessageStyled>
-                            <ErrorMessage name="email" component="div" />
+                            <ErrorMessage name="contactFormEmail" component="div" />
                           </ContactFormErrorMessageStyled>
-                          <Field type="email" name="email" placeholder={t('formEmail')} />
+                          <Field type="email" name="contactFormEmail" placeholder={t('formEmail')} />
 
                           <ContactFormErrorMessageStyled>
-                            <ErrorMessage name="message" component="div" />
+                            <ErrorMessage name="contactFormMessage" component="div" />
                           </ContactFormErrorMessageStyled>
-                          <Field as="textarea" name="message" placeholder={t('formMessage')} />
+                          <Field as="textarea" name="contactFormMessage" placeholder={t('formMessage')} />
 
                           <ContactFormErrorMessageStyled>
                             <ErrorMessage name="recaptcha" component="div" />
