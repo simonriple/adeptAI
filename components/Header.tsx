@@ -29,7 +29,7 @@ const Header = ({ children, ...headerStyledProps }: PropsWithChildren<ComponentP
 							</svg>
 							<p>Close</p>
 						</HeaderButtonStyled>
-						<HeaderMobileNavigation>{links}</HeaderMobileNavigation>
+						<HeaderMobileNavigation onClick={() => setMenuOpen(false)}>{links}</HeaderMobileNavigation>
 					</>
 				) : (
 					<>
