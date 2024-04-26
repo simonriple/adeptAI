@@ -182,8 +182,11 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 
 	const { t, i18n } = useTranslation();
 	const customers = t('customers', { returnObjects: true });
-	const ourStoryRef = useRef<HTMLElement>(null);
-	const ourCustomerRef = useRef<HTMLElement>(null);
+	const aboutUsRef = useRef<HTMLElement>(null);
+	const ourSolutionRef = useRef<HTMLElement>(null);
+	const ourCustomersRef = useRef<HTMLElement>(null);
+	const ourPartnersRef = useRef<HTMLElement>(null);
+	const testimonialsRef = useRef<HTMLElement>(null);
 	const contactRef = useRef<HTMLElement>(null);
 
 	const isMobile = useIsMobile();
@@ -255,12 +258,40 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 						<path d="M72.4122 20.8835H57.8351C56.687 20.8835 55.7511 19.9531 55.7511 18.7995V13.1842C55.7511 12.0415 56.6761 11.1165 57.8187 11.1165H70.2357L72.4122 6.50775H56.3442C52.7529 6.50775 49.8364 9.41882 49.8364 13.0155V18.9791C49.8364 22.5758 52.7529 25.4923 56.3496 25.4923H72.4122V20.8835Z" />
 					</svg>
 				</Header.Logo>
-				<Header.Link onClick={() => ourCustomerRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
-					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+				<Header.Link onClick={() => aboutUsRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
+					{/* <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
 						<path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l108-108q11-11 27.5-11.5T398-528q11 11 11 28t-11 28L291-364q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l108-107q11-11 27.5-11.5T483-443q11 11 11 28t-11 28L376-279q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l108-107q11-11 27.5-11.5T568-358q11 11 11 28t-11 28L460-194q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l175-175q23-23 56.5-23t56.5 23l75 75q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-14 14-20 33t-3 38q3 17-7 30t-27 15q-17 2-30-7.5T42-553q-6-38 5.5-74.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-98-560Z" />
-					</svg>
+					</svg> */}
 
-					<p>{t('customersLink')}</p>
+					<p>{t('aboutUsLink')}</p>
+				</Header.Link>
+				<Header.Link onClick={() => ourSolutionRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
+					{/* <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l108-108q11-11 27.5-11.5T398-528q11 11 11 28t-11 28L291-364q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l108-107q11-11 27.5-11.5T483-443q11 11 11 28t-11 28L376-279q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l108-107q11-11 27.5-11.5T568-358q11 11 11 28t-11 28L460-194q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l175-175q23-23 56.5-23t56.5 23l75 75q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-14 14-20 33t-3 38q3 17-7 30t-27 15q-17 2-30-7.5T42-553q-6-38 5.5-74.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-98-560Z" />
+					</svg> */}
+
+					<p>{t('ourSolutionLink')}</p>
+				</Header.Link>
+				<Header.Link onClick={() => ourCustomersRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
+					{/* <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l108-108q11-11 27.5-11.5T398-528q11 11 11 28t-11 28L291-364q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l108-107q11-11 27.5-11.5T483-443q11 11 11 28t-11 28L376-279q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l108-107q11-11 27.5-11.5T568-358q11 11 11 28t-11 28L460-194q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l175-175q23-23 56.5-23t56.5 23l75 75q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-14 14-20 33t-3 38q3 17-7 30t-27 15q-17 2-30-7.5T42-553q-6-38 5.5-74.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-98-560Z" />
+					</svg> */}
+
+					<p>{t('ourCustomersLink')}</p>
+				</Header.Link>
+				<Header.Link onClick={() => ourPartnersRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
+					{/* <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l108-108q11-11 27.5-11.5T398-528q11 11 11 28t-11 28L291-364q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l108-107q11-11 27.5-11.5T483-443q11 11 11 28t-11 28L376-279q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l108-107q11-11 27.5-11.5T568-358q11 11 11 28t-11 28L460-194q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l175-175q23-23 56.5-23t56.5 23l75 75q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-14 14-20 33t-3 38q3 17-7 30t-27 15q-17 2-30-7.5T42-553q-6-38 5.5-74.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-98-560Z" />
+					</svg> */}
+
+					<p>{t('ourPartnersLink')}</p>
+				</Header.Link>
+				<Header.Link onClick={() => testimonialsRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
+					{/* <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l108-108q11-11 27.5-11.5T398-528q11 11 11 28t-11 28L291-364q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l108-107q11-11 27.5-11.5T483-443q11 11 11 28t-11 28L376-279q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l108-107q11-11 27.5-11.5T568-358q11 11 11 28t-11 28L460-194q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l175-175q23-23 56.5-23t56.5 23l75 75q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-14 14-20 33t-3 38q3 17-7 30t-27 15q-17 2-30-7.5T42-553q-6-38 5.5-74.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-98-560Z" />
+					</svg> */}
+
+					<p>{t('testimonialsLink')}</p>
 				</Header.Link>
 				<Header.Link onClick={() => contactRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
 					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
@@ -319,6 +350,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 
 					<Parallax disabled={isMobile} translateY={['0', '20%']} shouldAlwaysCompleteAnimation startScroll={0}>
 						<HeroTitleStyled dangerouslySetInnerHTML={{ __html: t('heroTitle') }} />
+						<Text>{t('heroDescription')}</Text>
 					</Parallax>
 					<Parallax disabled={isMobile} speed={-100} translateY={['0', '-50%']} opacity={[1, -1]} shouldAlwaysCompleteAnimation>
 						<ScrollDownStyled onClick={() => ourStoryRef?.current?.scrollIntoView({ behavior: 'smooth' })}>
@@ -342,7 +374,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				</HeroImageContent>
 			</HeroSection>
 
-			<Section appearance="sand" ref={ourStoryRef}>
+			<Section appearance="sand" ref={aboutUsRef}>
 				<StyledContent width={55}>
 					<StyledContentTitle display="onlyMobile">{t('ourStory')}</StyledContentTitle>
 					<Parallax disabled={isMobile} translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
@@ -362,7 +394,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				</StyledContent>
 			</Section>
 
-			<Section>
+			<Section ref={ourSolutionRef}>
 				<StyledContent width={50}>
 					<Parallax disabled={isMobile} translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
 						<StyledContentTitle>{t('ourMission')}</StyledContentTitle>
@@ -419,7 +451,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				</StyledContent>
 			</Section>
 
-			<Section appearance="sand" ref={ourCustomerRef}>
+			<Section appearance="sand" ref={ourCustomersRef}>
 				<StyledContent width={35}>
 					<StyledContentTitle display="onlyMobile">{t('ourCustomers')}</StyledContentTitle>
 					<OurValuesLeftWrapperStyled>
@@ -451,7 +483,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				</OurCustomersGrid>
 			</Section>
 
-			<Section appearance="dark">
+			<Section appearance="dark" ref={ourPartnersRef}>
 				<OurPartnersWrapperStyled>
 					<Parallax opacity={[0, 3]} shouldAlwaysCompleteAnimation startScroll={0} style={{ width: '100%' }}>
 						<h3>{t('ourPartners')}</h3>
@@ -499,7 +531,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				</StyledContent>
 			</Section>
 
-			<Section>
+			<Section ref={testimonialsRef}>
 				<StyledContent>
 					<h3>{t('customerTestimonials')}</h3>
 

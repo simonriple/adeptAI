@@ -68,7 +68,7 @@ export const Text = styled.p<TextProps>`
 `;
 
 export const StyledSection = styled.section<StyledSectionProps>`
-	scroll-margin: 12rem;
+	scroll-margin: 6rem;
 	background-color: ${({ theme, appearance }) => (appearance === 'dark' ? theme.original.fill : appearance ? theme[appearance] : theme.background)};
 	color: ${({ theme, appearance }) => (appearance === 'dark' ? theme.original.white : appearance === 'sand' ? theme.original.black : theme.text)};
 `;
@@ -303,6 +303,7 @@ export const HeroRightWrapperStyled = styled.div`
 export const HeroTitleStyled = styled.h1`
 	min-width: 79rem;
 	white-space: nowrap;
+	padding-bottom: 2rem;
 
 	@media screen and (max-width: 1240px) {
 		min-width: auto;

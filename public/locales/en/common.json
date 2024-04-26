@@ -1,6 +1,7 @@
 {
 	"heroSubTitle": "Adept in compliance",
 	"heroTitle": "Compliance <br /> made easy",
+	"heroDescription": "A unique, modern and AI-powered compliance management solution. With Adept™ AI Engine it has never been easier to maintain regulatory compliance.",
 	"scrollDown": "Learn more",
 	"ourStory": "Our story",
 	"ourStoryDescription": "Adept Concept AS has, together with our customers, been at the forefront of compliance management/regulatory follow-up for over 20 years.",
@@ -18,7 +19,6 @@
 	"documentsInfo": "* We import documents directly from Loudata, Standard Norge and DNV among others. We also upload documents from other publishers provided a valid license is in place.",
 	"ourPartners": "Our partners",
 	"ourPartnersDescription": "We have skilled partners who can assist with everything from interpretation of regulations to management systems and compliance measurements.",
-	"customersLink": "Customers",
 	"customerTestimonials": "Customer Testimonials",
 	"customerTitle": "Customer",
 	"customers": [
@@ -55,7 +55,6 @@
 			"image": "maersk"
 		}
 	],
-	"contactLink": "Contact",
 	"contactUs": "Contact us",
 	"contactFormTile": "Contact us for a free, no-obligation demo!",
 	"formName": "Name",
@@ -66,5 +65,12 @@
 	"formInfoEmail": "Alternatively, you can send us an email at",
 	"formMessageSent": "Your message has been sent!",
 	"lightmode": "Light mode",
-	"signin": "Sign in"
+	"signin": "Sign in",
+
+	"aboutUsLink": "About us",
+	"ourSolutionLink": "Solution",
+	"ourCustomersLink": "Customers",
+	"ourPartnersLink": "Partners",
+	"testimonialsLink": "Testimonials",
+	"contactLink": "Contact"
 }

@@ -1,6 +1,7 @@
 {
 	"heroSubTitle": "Adept i samsvar",
 	"heroTitle": "Compliance <br /> på en enkel måte",
+	"heroDescription": "En unik og moderne AI-basert løsning for regelverksoppfølging. Med Adept™ AI Engine har det aldri lett lettere å være i samsvar.",
 	"scrollDown": "Få mer informasjon",
 	"ourStory": "Vår historie",
 	"ourStoryDescription": "Adept Concept AS har, sammen med våre kunder, vært i spiss på samsvarsstyring/regelverksoppfølging i over 20 år.",
@@ -55,7 +56,6 @@
 			"image": "maersk"
 		}
 	],
-	"contactLink": "Kontakt",
 	"contactUs": "Kontakt oss",
 	"contactFormTile": "Kontakt oss for en gratis og uforpliktende demo!",
 	"formName": "Navn",
@@ -66,5 +66,12 @@
 	"formInfoEmail": "Eventuelt kan du sende oss en e-post på",
 	"formMessageSent": "Din melding har blitt sendt!",
 	"lightmode": "Light mode",
-	"signin": "Logg inn"
+	"signin": "Logg inn",
+
+	"aboutUsLink": "Om oss",
+	"ourSolutionLink": "Løsning",
+	"ourCustomersLink": "Kunder",
+	"ourPartnersLink": "Partnere",
+	"testimonialsLink": "Kundeuttalelser",
+	"contactLink": "Kontakt"
 }
