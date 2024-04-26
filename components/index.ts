@@ -1,3 +1,4 @@
-export * from './button';
-export * from './languageSwitcher';
-export * from './darkModeSwitcher';
+import Header from './Header';
+
+export * from './Section';
+export default Header;

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { ContainerStyled } from '../styles/styles';
+import { Section } from '../components';
 
 const Custom404: NextPage = () => {
 	return (
@@ -13,9 +13,9 @@ const Custom404: NextPage = () => {
 				<meta name="robots" content="noindex,nofollow" />
 			</Head>
 
-			<ContainerStyled>
+			<Section>
 				<h1> 404 - Page Not Found!</h1>
-			</ContainerStyled>
+			</Section>
 		</>
 	);
 };

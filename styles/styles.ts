@@ -1,59 +1,154 @@
 import styled from 'styled-components';
+import { Section } from '../components/Section';
 
-interface ContainerStyledProps {
-	appearance?: 'sand' | 'text';
+interface TextProps {
+	size?: 'large' | 'medium' | 'small';
+}
+
+interface StyledSectionProps {
+	appearance?: 'sand' | 'text' | 'dark';
+}
+
+interface StyledContentProps {
+	width?: number;
+}
+
+interface StyledContentTitleProps {
+	display?: 'onlyMobile' | 'onlyDesktop' | 'always';
 }
 
 interface HeaderStyledProps {
 	hasScrolling: boolean;
 }
 
-interface HeaderBarProps {
-	hasScrolling: boolean;
-}
-
-interface WrapperStyledProps {
-	wide?: boolean;
-}
-
 interface ContactFormMessageSentProps {
 	show: boolean;
 }
 
-export const HeaderBarStyled = styled.div<HeaderBarProps>`
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+export const Text = styled.p<TextProps>`
+	font-family: 'Slim', sans-serif;
+	padding: 0;
+	margin: 0;
+	${({ size }) => {
+		switch (size) {
+			case 'large':
+				return `
+					font-size: 3rem;
+					line-height: 4.6rem;
+					@media screen and (max-width: 1240px) {
+						line-height: 4.2rem;
+					}
+					@media screen and (max-width: 768px) {
+						font-size: 2.4rem;
+						line-height: 3.2rem;
+					}
+				`;
+			case 'small':
+				return `
+					font-size: 1.6rem;
+					line-height: 2.4rem;
 
-	& > * {
-		padding-left: ${({ hasScrolling }) => hasScrolling ? '1.2rem'	: '2.4rem'};
+					@media screen and (max-width: 768px) {
+						font-size: 1.4rem;
+						line-height: 2.0rem;
+					}
+				`;
+			default:
+				return `
+					font-size: 2.4rem;
+					line-height: 3.2rem;
+
+					@media screen and (max-width: 768px) {
+						font-size: 2.0rem;
+						line-height: 2.4rem;
+					}
+				`;
+		}
+	}}
+`;
+
+export const StyledSection = styled.section<StyledSectionProps>`
+	scroll-margin: 12rem;
+	background-color: ${({ theme, appearance }) => (appearance === 'dark' ? theme.original.fill : appearance ? theme[appearance] : theme.background)};
+	color: ${({ theme, appearance }) => (appearance === 'dark' ? theme.original.white : appearance === 'sand' ? theme.original.black : theme.text)};
+`;
+
+export const SectionContainerStyled = styled.div`
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: 1440px;
+	margin: auto;
+	padding: 12rem;
+
+	@media screen and (max-width: 1024px) {
+		padding: 6rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 1.6rem;
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+		flex-wrap: wrap;
+		gap: 2.4rem;
+	}
+`;
+
+export const StyledContent = styled.div<StyledContentProps>`
+	${({ width }) => width && `width: ${width}%;`}
+
+	&:not(:last-of-type) {
+		padding-right: 4.6rem;
+		@media screen and (max-width: 768px) {
+			padding-right: 0;
+		}
+	}
+	&:not(:first-of-type) {
+		padding-left: 4.6rem;
 
 		@media screen and (max-width: 768px) {
-			padding-left: 1.2rem;
+			padding-left: 0;
 		}
+	}
 
-		svg {
-			width: ${({ hasScrolling }) => hasScrolling ? '2rem'	: '2.4rem'};
-			fill: ${({ theme }) => theme.fill};
-		}
+	@media screen and (max-width: 768px) {
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
 
-		&:hover {
-			p {
-				color: ${({ theme }) => theme.hover.text};
-			}
-
-			svg {
-				fill: ${({ theme }) => theme.hover.fill};
-				transition-delay: 0 !important;
-			}
+	h4 {
+		@media screen and (max-width: 768px) {
+			padding-bottom: 3.2rem;
 		}
 	}
 `;
 
+export const StyledContentTitle = styled.h4<StyledContentTitleProps>`
+	${({ display }) => {
+		switch (display) {
+			case 'onlyMobile':
+				return `
+				display: none;
+				@media screen and (max-width: 768px) {
+					display: block;
+				}
+				
+			`;
+			case 'onlyDesktop':
+				return `
+				@media screen and (max-width: 768px) {
+					display: none;
+				}
+				`;
+		}
+	}}
+`;
+
 export const HeaderStyled = styled.header<HeaderStyledProps>`
-	/* padding: 6.4rem; */
-	padding: 3.2rem 6.4rem;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	position: fixed;
@@ -62,122 +157,129 @@ export const HeaderStyled = styled.header<HeaderStyledProps>`
 	background-color: ${({ theme }) => theme.body};
 	z-index: 100;
 
-	padding: ${({ hasScrolling }) => hasScrolling ? '2.2rem 6.4rem'	: '3.2rem 6.4rem'};
+	padding: ${({ hasScrolling }) => (hasScrolling ? '2.2rem 6.4rem' : '3.2rem 6.4rem')};
 
 	@media screen and (max-width: 1240px) {
-		padding: ${({ hasScrolling }) => hasScrolling ? '2.2rem 3.2rem'	: '3.2rem'};
+		padding: ${({ hasScrolling }) => (hasScrolling ? '2.2rem 3.2rem' : '3.2rem')};
 	}
 
 	@media screen and (max-width: 768px) {
-		padding: ${({ hasScrolling }) => hasScrolling ? '1.6rem'	: '3rem 1.6rem'};
+		padding: ${({ hasScrolling }) => (hasScrolling ? '1.6rem' : '3rem 1.6rem')};
 	}
 
 	div + div {
 		padding-left: 2.4rem;
 	}
 
-	h1 svg {
-		width: ${({ hasScrolling }) => hasScrolling ? '10rem'	: '13.7rem'};
-		/* width: 13.7rem; */
+	> svg {
+		width: ${({ hasScrolling }) => (hasScrolling ? '10rem' : '13.7rem')};
 		height: 3.2rem;
 		fill: ${({ theme }) => theme.orange};
 	}
+
+	& > * {
+		padding-left: ${({ hasScrolling }) => (hasScrolling ? '1.2rem' : '2.4rem')};
+
+		@media screen and (max-width: 768px) {
+			padding-left: 1.2rem;
+		}
+
+		svg {
+			width: ${({ hasScrolling }) => (hasScrolling ? '2rem' : '2.4rem')};
+			fill: ${({ theme }) => theme.fill};
+		}
+
+		p {
+			color: ${({ theme }) => theme.text};
+		}
+	}
 `;
 
-export const HeaderLoginInStyled = styled.div``;
-// 1
-export const HeroStyled = styled.section`
-	/* height: calc(100vh - 10.1rem); */
-	/* padding-top: 16.5rem; */
-	padding-top: 10rem;
-
-	@media screen and (max-width: 1240px) {
-		padding-top: 10rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		padding-top: 9.6rem;
-	}
-`;
-
-export const ContainerStyled = styled.div<ContainerStyledProps>`
-	background-color: ${({ theme, appearance }) => appearance ? theme[appearance] : theme.background};`;
-
-export const WrapperStyled = styled.div<WrapperStyledProps>`
-	padding: 0 16.8rem;
+export const HeaderMobileNavigation = styled.nav`
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
-
-	@media screen and (min-width: 1740px) {
-		padding: 0 16.8rem;
-	}
-
-	@media screen and (max-width: 1240px) {
-		padding: 0 6rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		padding: 0 1.6rem;
-		flex-wrap: wrap;
-	}
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	padding: 2rem;
 `;
 
-
-export const HeroSubTileStyled = styled.p`
-	font-family: 'NeutralMono', sans-serif;
+export const HeaderNavigation = styled.nav`
+	display: flex;
+`;
+export const HeaderButtonStyled = styled.button`
+	appearance: none;
+	background: none;
+	border: none;
+	cursor: pointer;
 	font-size: 1.8rem;
-	padding-top: 3.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	min-height: 1rem;
+	color: inherit;
+	gap: 0.5rem;
+	p {
+		padding-right: 1rem;
+		margin: 0;
+	}
+
+	&:hover {
+		p {
+			color: ${({ theme }) => theme.hover.text};
+		}
+
+		svg {
+			fill: ${({ theme }) => theme.hover.fill};
+			transition-delay: 0 !important;
+		}
+	}
 `;
 
-export const HeroLeftStyled = styled.div`
-	width: 35%;
+export const HeroSection = styled(Section)`
+	${SectionContainerStyled} {
+		padding-top: 10rem;
+
+		@media screen and (max-width: 1240px) {
+			padding-top: 10rem;
+		}
+
+		@media screen and (max-width: 768px) {
+			padding-top: 9.6rem;
+		}
+	}
+`;
+export const HeroTitleContent = styled(StyledContent)`
 	z-index: 10;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
 		order: 2;
 	}
-
-	${HeroSubTileStyled} {
-    @media screen and (max-width: 768px) {
-			display: none;
-		}
-  }
 `;
 
-export const HeroRightStyled = styled.div`
-	/* width: 60%; */
-	position: relative;
+export const HeroImageContent = styled(StyledContent)`
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 	overflow: hidden;
-	width: 100%;
 	border-radius: 2.5rem;
 
 	@media screen and (max-width: 768px) {
-		order: 1;
 		width: 100%;
-	}
-
-	${HeroSubTileStyled} {
-		display: none;
-
-		@media screen and (max-width: 768px) {
-			display: block;
-			padding: 1rem 0 3.2rem;
-		}
+		order: 1;
 	}
 `;
 
 export const HeroRightWrapperStyled = styled.div`
 	position: relative;
 	width: 100%;
-	/* width: calc(100% * (79/170)); */
-	/* margin-left: calc(-100% * (16/170)); */
 	min-width: 79rem;
 	border-radius: 2.5rem;
 	height: 100%;
 	overflow: hidden;
-	height: 86rem;
+	height: 70rem;
 
 	@media screen and (max-width: 1240px) {
 		width: 100%;
@@ -198,29 +300,20 @@ export const HeroRightWrapperStyled = styled.div`
 	}
 `;
 
-export const HeroTileStyled = styled.div`
-	font-family: 'BulkyWide', sans-serif;
-	font-size: 8.8rem;
-	line-height: 9.6rem;
-	padding-top: 18.4rem;
+export const HeroTitleStyled = styled.h1`
 	min-width: 79rem;
 	white-space: nowrap;
 
 	@media screen and (max-width: 1240px) {
-		font-size: 6.8rem;
-		line-height: 7.6rem;
 		min-width: auto;
 	}
 
 	@media screen and (max-width: 768px) {
-		font-size: 4.8rem;
-		line-height: 5.6rem;
-		padding-top: 3.2rem;
 		white-space: wrap;
 	}
 `;
 
-export const ScrolDownStyled = styled.button`
+export const ScrollDownStyled = styled.button`
 	appearance: none;
 	background: none;
 	border: none;
@@ -262,8 +355,6 @@ export const ScrolDownStyled = styled.button`
 
 	span {
 		display: block;
-		font-size: 1.8rem;
-		font-family: 'NeutralMono', sans-serif;
 	}
 
 	svg {
@@ -273,149 +364,8 @@ export const ScrolDownStyled = styled.button`
 	}
 `;
 
-
-// 2
-export const OurStoryStyled = styled.section`
-	padding-top: 20rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-top: 12rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding-top: 12.8rem; */
-		padding-top: 6.4rem;
-	}
-`;
-
-export const OurStoryLeftStyled = styled.div`
-	width: 35%;
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	h4 {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
-		position: sticky;
-		top: 16.5rem;
-
-		@media screen and (max-width: 1240px) {
-			top: 10rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			padding-bottom: 3.2rem;
-			position: relative;
-			top: 0;
-			/* top: 11.7rem; */
-		}
-	}
-`;
-
-export const OurStoryRightStyled = styled.div`
-	width: 65%;
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	p {
-		font-size: 4.8rem;
-		line-height: 6.4rem;
-		font-family: 'Slim', sans-serif;
-		word-wrap: break-word;
-
-		@media screen and (max-width: 768px) {
-			font-size: 3.2rem;
-			line-height: 4rem;
-			word-wrap: break-word;
-		}
-	}
-`;
-
-
-// 3
-export const OurMissionStyled = styled.section`
-	padding: 20rem 0;
-
-	@media screen and (max-width: 1024px) {
-		padding: 12rem 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 6.4rem 0;
-	}
-
-	h4 {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
-	}
-
-	p {
-		/* font-size: 4rem; */
-		font-size: 3.2rem;
-		line-height: 5.6rem;
-		font-family: 'Slim', sans-serif;
-
-		@media screen and (max-width: 768px) {
-			font-size: 2.4rem;
-			line-height: 3.2rem;
-			padding-top: 3.2rem;
-		}
-	}
-`;
-
-export const OurMissionLeftStyled = styled.div`
-	width: 50%;
-	padding-right: 4.3rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-right: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-right: 0;
-	}
-
-	h4 {
-		display: none;
-		@media screen and (max-width: 768px) {
-			display: block;
-		}
-	}
-`;
-
-export const OurMissionRightStyled = styled.div`
-	width: 50%;
-	padding-left: 4.3rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-left: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-left: 0;
-	}
-
-	h4 {
-		padding-bottom: 7.2rem;
-
-		@media screen and (max-width: 768px) {
-			display: none;
-		}
-	}
-`;
-
 export const OurMissionLeftWrapperStyled = styled.div`
 	position: relative;
-	/* width: calc(100% * (55/170)); */
 	width: 100%;
 	border-radius: 2.5rem;
 	height: 100%;
@@ -428,189 +378,22 @@ export const OurMissionLeftWrapperStyled = styled.div`
 	}
 `;
 
-// 4
-export const OurVisionStyled = styled.section`
-	h4 {
-		font-size: 4.8rem;
-		line-height: 5.6rem;
-		font-family: 'BulkyWide', sans-serif;
-		padding: 0 0 8rem;
-		margin: 0;
-
-		@media screen and (max-width: 768px) {
-			font-size: 4rem;
-			line-height: 4.8rem;
-		}
-	}
-
-	p {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'SlimMono', sans-serif;
-
-		@media screen and (max-width: 768px) {
-			font-size: 1.6rem;
-			line-height: 2.4rem;
-		}
-	}
-
-	h4, p {
-		color: ${({ theme }) => theme.original.text};
-	}
-
-	${WrapperStyled}  {
-		padding-top: 19rem;
-		padding-bottom: 19rem;
-
-		@media screen and (max-width: 1024px) {
-			padding-top: 12rem;
-			padding-bottom: 12rem;
-		}
-
-		@media screen and (max-width: 767px) {
-			padding-top: 9.6rem;
-			padding-bottom: 9.6rem;
-		}
-	}
-`;
-
-export const OurVisionLeftStyled = styled.div`
-	width: 50%;
-	padding-right: 6.8rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-right: 3rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-right: 0;
-	}
-`;
-
-export const OurVisionRightStyled = styled.div`
-	width: 50%;
-	padding-left: 4.3rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-left: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-left: 0;
-	}
-`;
-
-export const OurVisionLeftWrappStyled = styled.div`
-	width: 100%;
-	position: sticky;
-	top: 20.5rem;
-
-	@media screen and (max-width: 1240px) {
-		top: 12rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		max-width: 40rem;
-		margin: 0 auto;
-		padding-bottom: 6.8rem;
-		position: relative;
-		top: 0;
-	}
-`;
-
-// 5
-export const OurValuesStyled = styled.section`
-	padding: 24rem 0;
-
-	@media screen and (max-width: 1240px) {
-		padding: 12rem 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 6.4rem 0;
-	}
-
-	h4 {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
-		padding: 0 0 7.2rem;
-		margin: 0;
-	}
-
-	p {
-		/* font-size: 4rem; */
-		font-size: 3.2rem;
-		line-height: 5.6rem;
-		font-family: 'Slim', sans-serif;
-
-		@media screen and (max-width: 1240px) {
-			font-size: 3.2rem;
-			line-height: 4.2rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			font-size: 2.4rem;
-			line-height: 3.2rem;
-			padding-top: 3.2rem;
-		}
-	}
-`;
-
-export const OurValuesLeftStyled = styled.div`
-	width: 50%;
-	padding-right: 4rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-right: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-right: 0;
-		order: 1;
-	}
-
-	h4 {
-		display: block;
-		@media screen and (max-width: 768px) {
-			display: none;
-		}
-	}
-`;
-
-export const OurValuesRightStyled = styled.div`
-	width: 50%;
-	padding-left: 4rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-left: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-left: 0;
-	}
-
-	h4 {
-		padding-bottom: 3.2rem;
-
-		display: none;
-		@media screen and (max-width: 768px) {
-			display: block;
-		}
-	}
-`;
-
-export const OurCustomersLeftWrapperStyled = styled.div`
+export const OurVisionLeftWrapperStyled = styled.div`
 	position: relative;
-	/* width: calc(100% * (55/170)); */
 	width: 100%;
 	border-radius: 2.5rem;
-	height: 100%;
+	height: 86rem;
+	overflow: hidden;
+
+	@media screen and (max-width: 768px) {
+		height: 32rem;
+	}
+`;
+
+export const OurValuesLeftWrapperStyled = styled.div`
+	position: relative;
+	width: 100%;
+	border-radius: 2.5rem;
 	max-height: 57rem;
 	overflow: hidden;
 	height: 86rem;
@@ -624,90 +407,13 @@ export const OurCustomersLeftWrapperStyled = styled.div`
 	}
 `;
 
-export const OurCustomersLeftStyled = styled.div`
-	width: 35%;
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	h4 {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
-		margin: 0;
-		position: sticky;
-		top: 16.5rem;
-
-		@media screen and (max-width: 1240px) {
-			top: 10rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			padding-bottom: 3.2rem;
-			position: relative;
-			top: 0;
-		}
-	}
-`;
-
-export const OurCustomersRightStyled = styled.div`
-	width: 65%;
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	p {
-		/* font-size: 4rem; */
-		font-size: 3.2rem;
-		line-height: 5.6rem;
-		font-family: 'Slim', sans-serif;
-
-		@media screen and (max-width: 768px) {
-			font-size: 2.4rem;
-			line-height: 4rem;
-			word-wrap: break-word;
-		}
-	}
-`;
-
-// 6
-export const OurCustomersStyled = styled.section`
-	padding: 0 0 12rem;
-
-	@media screen and (max-width: 1240px) {
-		padding: 0 0 6rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 0 0 3.2rem;
-	}
-`;
-
-// 7
-export const CustomersStyled = styled.section`
-	padding: 12rem 0;
-	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
-
-	@media screen and (max-width: 1240px) {
-		padding: 6rem 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 3.2rem 0;
-	}
-`;
-
 export const OurCustomersGrid = styled.ul`
 	list-style: none;
 	display: grid;
 	margin: 0;
 	padding: 0;
 	grid-template-columns: repeat(4, 1fr);
-  gap: 10rem;
+	gap: 10rem;
 	width: 100%;
 
 	@media screen and (max-width: 768px) {
@@ -718,7 +424,6 @@ export const OurCustomersGrid = styled.ul`
 export const OurCustomersItem = styled.li`
 	width: 100%;
 	height: 10rem;
-	/* height: 100%; */
 	position: relative;
 
 	&:hover {
@@ -731,211 +436,20 @@ export const OurCustomersItem = styled.li`
 	}
 `;
 
-// 8
-export const DocumentsStyled = styled.section`
-	padding: 12rem 0;
-	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
-
-	@media screen and (max-width: 1240px) {
-		padding: 6rem 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 3.2rem 0;
-	}
-
-	h4, p, span {
-		color: ${({ theme }) => theme.original.text};
-	}
-
-	h4 {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
-		padding: 0 0 7.2rem;
-		margin: 0;
-
-		@media screen and (max-width: 768px) {
-			padding: 0 0 2rem;
-		}
-	}
-
-	p {
-		/* font-size: 4rem; */
-		font-size: 3.2rem;
-		line-height: 5.6rem;
-		font-family: 'Slim', sans-serif;
-
-		@media screen and (max-width: 1240px) {
-			font-size: 3.2rem;
-			line-height: 4.2rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			font-size: 2.4rem;
-			line-height: 3.2rem;
-			padding-top: 3.2rem;
-		}
-	}
-
-	span {
-		display: block;
-		font-size: 1.6rem;
-		line-height: 2.4rem;
-		font-family: 'Slim', sans-serif;
-		padding-top: 7.2rem;
-
-		@media screen and (max-width: 1240px) {
-			padding-top: 5.2rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			padding-top: 3.2rem;
-		}
-	}
-`;
-
-export const DocumentsLeftStyled = styled.div`
-	width: 50%;
-	padding-right: 4rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-right: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-right: 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	h4 {
-		display: none;
-
-		@media screen and (max-width: 768px) {
-			display: block;
-		}
-	}
-`;
-
-export const DocumentsRightStyled = styled.div`
-	width: 50%;
-	padding-left: 4rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-left: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-left: 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-
-	h4 {
-		@media screen and (max-width: 768px) {
-			display: none;
-		}
-	}
-`;
-
-export const DocumentsGrid = styled.ul`
-	list-style: none;
-	display: grid;
-	margin: 8rem 0 0;
-	padding: 0;
-	grid-template-columns: 1fr;
-  /* gap: 10rem; */
-	width: 100%;
-
-	@media screen and (max-width: 1024px) {
-		margin: 5rem 0 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		margin: 0;
-	}
-`;
-
-export const DocumentsItem = styled.li`
-	margin: 0 10rem 7rem;
-	height: 10rem;
-	/* width: 100%; */
-	position: relative;
-
-	&:hover {
-		transform: scale(1.1);
-	}
-	
-	@media screen and (max-width: 1024px) {
-		margin: 0 10rem 6rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		max-width: 20rem;
-		width: 100%;
-		margin: 0 auto 2rem;
-	}
-`;
-
-export const DocumentsLeftWrapperStyled = styled.div`
-`;
-
-// 9
-export const OurPartnersStyled = styled.section`
-	${WrapperStyled} {
-		padding-top: 19rem;
-		padding-bottom: 19rem;
-
-		@media screen and (max-width: 1024px) {
-			padding-top: 12rem;
-			padding-bottom: 12rem;
-		}
-
-		@media screen and (max-width: 767px) {
-			padding-top: 9.6rem;
-			padding-bottom: 9.6rem;
-		}
-	}
-
-	${ContainerStyled} {
-		background-color: ${({ theme }) => theme.original.text};
-	
-	}
-`;
-
 export const OurPartnersWrapperStyled = styled.div`
 	text-align: center;
 	width: 100%;
 
-	h4, p {
-		color: ${({ theme }) => theme.original.white};
-	}
-
-	h4 {
-		font-size: 4.8rem;
-		line-height: 5.6rem;
-		font-family: 'BulkyWide', sans-serif;
+	h3 {
 		padding: 0 0 8rem;
 		margin: 0;
 
 		@media screen and (max-width: 767px) {
-			font-size: 4rem;
 			padding: 0 0 4rem;
 		}
 	}
 
 	p {
-		font-size: 2.4rem;
-		line-height: 3.2rem;
-		font-family: 'Slim', sans-serif;
 		padding: 0 0 8rem;
 		max-width: 78rem;
 		margin: 0 auto;
@@ -952,11 +466,11 @@ export const OurPartnersGrid = styled.ul`
 	margin: 0;
 	padding: 0;
 	grid-template-columns: repeat(3, 1fr);
-  gap: 10rem;
+	gap: 10rem;
 	width: 100%;
 
 	@media screen and (max-width: 1240px) {
-    grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	@media screen and (max-width: 768px) {
@@ -974,7 +488,7 @@ export const OurPartnersItem = styled.li`
 	}
 
 	@media screen and (max-width: 1240px) {
-    height: 8rem;
+		height: 8rem;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -982,44 +496,43 @@ export const OurPartnersItem = styled.li`
 	}
 `;
 
-// 9
+export const DocumentsGrid = styled.ul`
+	list-style: none;
+	display: grid;
+	padding: 0;
+	grid-template-columns: 1fr;
+	width: 100%;
+	background-color: ${({ theme }) => theme.original.white};
+	border-radius: 2.5rem;
 
-export const TestimonialsStyled = styled.section`
-	padding: 24rem 0 12rem;
-	background-color: ${({ theme }) => theme.alternatives.formWhitetoSand};
-
-	@media screen and (max-width: 1240px) {
-		padding: 12rem 0 6rem;
+	@media screen and (max-width: 1024px) {
+		margin: 5rem 0 0;
 	}
 
 	@media screen and (max-width: 768px) {
-		/* padding: 12.8rem 0; */
-		padding: 6.4rem 0 3.2rem,;
-	}
-
-	h4, h5, p, span {
-		color: ${({ theme }) => theme.original.text};
-	}
-
-	h4 {
-		display: block;
-		font-size: 4.8rem;
-		line-height: 5.6rem;
-		font-family: 'BulkyWide', sans-serif;
-		padding: 0 0 12rem;
 		margin: 0;
-
-		@media screen and (max-width: 1024px) {
-			padding: 0 0 8rem;
-		}
-
-		@media screen and (max-width: 767px) {
-			font-size: 4rem;
-			padding: 0 0 4rem;
-		}
 	}
 `;
 
+export const DocumentsItem = styled.li`
+	margin: 5rem 7rem;
+	height: 10rem;
+	position: relative;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+
+	@media screen and (max-width: 1024px) {
+		margin: 5rem 4rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		max-width: 20rem;
+		width: 100%;
+		margin: 0 auto 2rem;
+	}
+`;
 
 export const TestimonialsListStyled = styled.ul`
 	list-style: none;
@@ -1028,15 +541,10 @@ export const TestimonialsListStyled = styled.ul`
 
 	li + li {
 		padding-top: 12rem;
-	
-		/* @media screen and (max-width: 1024px) {
-			padding-top: 12rem;
-		} */
 
 		@media screen and (max-width: 768px) {
 			padding-top: 8rem;
 		}
-	
 	}
 `;
 
@@ -1048,16 +556,13 @@ export const TestimonialsElementWrapperStyled = styled.div`
 	margin: 0 auto 0 0;
 `;
 
-
 export const TestimonialsElementStyled = styled.li`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
 
-
-
 	@media screen and (max-width: 768px) {
-		flex-direction: column	;
+		flex-direction: column;
 	}
 
 	&:nth-child(2n) {
@@ -1082,13 +587,10 @@ export const TestimonialsElementLeftStyled = styled.div`
 		padding-bottom: 2.2rem;
 		position: relative;
 		top: 0;
-		/* top: 11.7rem; */
 	}
-	
-	p {
-		font-size: 1.8rem;
-		line-height: 3.2rem;
-		font-family: 'NeutralMono', sans-serif;
+
+	h4 {
+		margin: 0;
 		padding-bottom: 2.4rem;
 
 		@media screen and (max-width: 768px) {
@@ -1105,14 +607,9 @@ export const TestimonialsElementRightStyled = styled.div`
 		padding-top: 2rem;
 	}
 
-	p, h5 {
-		font-size: 2.4rem;
-		line-height: 3.2rem;
-		font-family: 'Slim', sans-serif;
-
+	p,
+	h5 {
 		@media screen and (max-width: 768px) {
-			font-size: 1.6rem;
-			line-height: 2.4rem;
 			word-wrap: break-word;
 		}
 	}
@@ -1120,102 +617,21 @@ export const TestimonialsElementRightStyled = styled.div`
 	h5 {
 		padding: 0 0 2rem;
 		margin: 0;
-		font-family: 'Median', sans-serif;
 	}
 `;
 
 export const TestimonialsInfoStyled = styled.div`
-	font-size: 2.4rem;
-	line-height: 3.2rem;
-	font-family: 'Slim', sans-serif;
-	padding: 2rem 0 0 ;
-
-	@media screen and (max-width: 768px) {
-		font-size: 1.6rem;
-		line-height: 2.4rem;
-		word-wrap: break-word;
-	}
-
-	b {
-		margin: 0;
-		font-family: 'Median', sans-serif;
-	}
-
-	b, span {
-		display: block;
-	}
-`;
-
-// 10
-export const ContactStyled = styled.section`
-	padding: 12rem 0;
-
-	@media screen and (max-width: 1240px) {
-		padding: 6rem 0;
-	}
-
-	@media screen and (max-width: 768px) {
-		/* padding: 0 0 12.8rem; */
-		padding: 3.2rem 0;
-	}
-
-	h4 {
-		display: block;
-		font-size: 4.8rem;
-		line-height: 5.6rem;
-		font-family: 'BulkyWide', sans-serif;
-		padding: 0 0 8rem;
-
-		@media screen and (max-width: 767px) {
-			font-size: 4rem;
-			padding: 0 0 4rem;
-		}
-	}
-`;
-
-export const ContactContainerStyled = styled.div`
-	width: 100%;
-	
-`;
-
-export const ContactTitleWrapperStyled = styled.div`
-	width: 100%;
-	text-align: left;
-
-	h4 {
-		margin: 0;
-	}
-`;
-
-export const ContactWrapperStyled = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-	}
-`;
-
-export const ContactLeftStyled = styled.div`
-	width: 50%;
-	padding-right: 4.3rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-right: 2rem;
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-right: 0;
-	}
+	padding: 2rem 0 0;
 `;
 
 export const ContactMapWrapperStyled = styled.div`
 	position: relative;
 	width: 100%;
-	height: 80rem;
+	height: 100%;
+	height: 86rem;
 	border-radius: 2.5rem;
+	border: 0.1rem solid ${({ theme }) => theme.original.white};
+
 	overflow: hidden;
 
 	@media screen and (max-width: 768px) {
@@ -1225,23 +641,21 @@ export const ContactMapWrapperStyled = styled.div`
 `;
 
 export const ContactFormWrapperStyled = styled.div`
-	input, textarea {
+	input,
+	textarea {
 		appearance: none;
 		background: none;
-		border: 0.1rem solid ${({ theme }) => theme.text};
+		border: 0.1rem solid ${({ theme }) => theme.original.white};
 		border-radius: 0.8rem;
 		width: 100%;
-		margin: 0 0 2.4rem;
+		margin: 0 0 1.8rem;
 		font-family: 'Neutral', sans-serif;
-		font-size: 2.4rem;
-		line-height: 3.2rem;
+		font-size: 1.8rem;
+		line-height: 2.6rem;
 		padding: 1.6rem;
+		color: ${({ theme }) => theme.original.white};
 
 		&::placeholder {
-			color: ${({ theme }) => theme.text};
-			font-family: 'Neutral', sans-serif;
-			font-size: 2.4rem;
-			line-height: 3.2rem;
 			opacity: 0.4;
 		}
 	}
@@ -1255,10 +669,9 @@ export const ContactFormWrapperStyled = styled.div`
 		color: ${({ theme }) => theme.original.body};
 		width: 100%;
 		padding: 1.6rem;
-		margin: 2.4rem 0 0;
 		font-family: 'Neutral', sans-serif;
-		font-size: 2.4rem;
-		line-height: 3.2rem;
+		font-size: 1.8rem;
+		line-height: 2.6rem;
 		cursor: pointer;
 
 		&:hover {
@@ -1268,9 +681,6 @@ export const ContactFormWrapperStyled = styled.div`
 `;
 
 export const ContactFormInfoStyled = styled.div`
-	font-family: 'Slim', sans-serif;
-	font-size: 1.6rem;
-	line-height: 2.4rem;
 	padding-top: 7rem;
 
 	@media screen and (max-width: 1024px) {
@@ -1301,42 +711,11 @@ export const ContactFormErrorMessageStyled = styled.div`
 	padding-bottom: 1rem;
 `;
 
-
-export const ContactRightStyled = styled.div`
-	width: 50%;
-	padding-left: 4.3rem;
-	position: sticky;
-	top: 16.5rem;
-
-	@media screen and (max-width: 1024px) {
-		padding-left: 2rem;
-		top: 10rem;
+export const ReCAPTCHAContainer = styled.div`
+	div > div > div {
+		margin: auto;
 	}
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-		padding-left: 0;
-		position: relative;
-		top: 0;
-	}
-
-	h5 {
-		font-family: 'Median', sans-serif;
-		font-size: 2.4rem;
-		line-height: 3.2rem;
-		padding-top: 2rem;
-		padding-bottom: 7.2rem;
-		margin: 0;
-
-		@media screen and (max-width: 1024px) {
-			padding-bottom: 5rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			padding-bottom: 4rem;
-			padding-top: 0;
-		}
-	}
+	margin: 0 0 1.8rem;
 `;
 
 export const ContactFormMessageSentStyled = styled.div<ContactFormMessageSentProps>`
@@ -1356,8 +735,8 @@ export const ContactFormMessageSentStyled = styled.div<ContactFormMessageSentPro
 	padding: 1rem;
 	text-align: center;
 	color: #2db83d;
-	opacity: ${({ show }) => show ? 1 : 0};
-	pointer-events: ${({ show }) => show ? 'auto' : 'none'};
-	visibility: ${({ show }) => show ? 'visible' : 'hidden'};
+	opacity: ${({ show }) => (show ? 1 : 0)};
+	pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
+	visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
 	transition: all 0.3s ease-in-out;
 `;

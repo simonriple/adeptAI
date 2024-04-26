@@ -1,22 +1,20 @@
-import Head from 'next/head';
-import type { AppProps } from 'next/app';
-import { ThemeProvider } from 'styled-components';
-import { useState } from 'react';
 import { appWithTranslation } from 'next-i18next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyles } from '../styles/globalStyles';
 import '../styles/globals.css';
 
-import { lightTheme, darkTheme } from '../styles/Themes';
-
+import { darkTheme, lightTheme } from '../styles/Themes';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [themeName, setThemeName] = useState('light');
 
 	const themeToggler = () => setThemeName(themeName === 'light' ? 'dark' : 'light');
 	const theme = themeName === 'light' ? lightTheme : darkTheme;
-
 
 	return (
 		<>
@@ -33,25 +31,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 				{/* <meta name="description" content="Adept Concept AS Web site"> */}
 			</Head>
 
-			
-				<ThemeProvider theme={theme}>
-					<GlobalStyles />
-					{/* DarkModeSwitcherStyled */}
-
-					<>
-						{/* HeaderComponent */}
-						<main>
-							{/* <ParallaxProvider scrollContainer={scrollEl}> */}
-							<ParallaxProvider>
-								<Component {...pageProps} theme={theme} themeToggler={themeToggler} themeName={themeName} />
-							</ParallaxProvider>
-						</main>
-						{/* FooterComponent */}
-					</>
-				</ThemeProvider>
+			<ThemeProvider theme={theme}>
+				<GlobalStyles />
+				<main>
+					<ParallaxProvider>
+						<Component {...pageProps} theme={theme} themeToggler={themeToggler} themeName={themeName} />
+					</ParallaxProvider>
+				</main>
+			</ThemeProvider>
 		</>
 	);
 }
 
 export default appWithTranslation(MyApp);
-

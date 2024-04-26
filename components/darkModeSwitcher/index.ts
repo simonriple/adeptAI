@@ -1,1 +1,0 @@
-export { DarkModeSwitcherComponent } from './darkModeSwitcher';

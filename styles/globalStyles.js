@@ -66,7 +66,7 @@ export const GlobalStyles = createGlobalStyle`
   button,
   input,
   textarea {
-    transition: all 0.3s ease;
+     transition: all 0.3s ease;
   }
 
   #eds-autocomplete-container {
@@ -79,7 +79,6 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
 
-    p,
     h1,
     h2,
     strong,
@@ -107,5 +106,95 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'BulkyWide', sans-serif;
+    font-size: 8.8rem;
+    line-height: 9.6rem;
+    
+    @media screen and (max-width: 1240px) {
+      font-size: 6.8rem;
+      line-height: 7.6rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 4.8rem;
+      line-height: 5.6rem;
+    }
+  }
+
+  h2 {
+    font-family: 'NeutralMono', sans-serif;
+	  font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 4.8rem;
+		line-height: 5.6rem;
+		font-family: 'BulkyWide', sans-serif;
+
+		@media screen and (max-width: 768px) {
+			font-size: 4rem;
+			line-height: 4.8rem;
+		}
+  }
+
+  h4 {
+		font-size: 1.8rem;
+		line-height: 3.2rem;
+		font-family: 'NeutralMono', sans-serif;
+	}
+
+  h5 {
+    font-size: 2.4rem;
+		line-height: 3.2rem;
+		font-family: 'Median', sans-serif;
+
+		@media screen and (max-width: 768px) {
+			font-size: 2.2rem;
+			line-height: 2.4rem;
+		}
+  }
+  
+
+  // p {
+	// 	font-size: 2.4rem;
+	// 	line-height: 3.2rem;
+	// 	font-family: 'Slim', sans-serif;
+
+	// 	@media screen and (max-width: 768px) {
+	// 		font-size: 1.6rem;
+	// 		line-height: 2.4rem;
+	// 	}
+	// }
+
+  // p {
+	// 	/* font-size: 4rem; */
+	// 	font-size: 3.2rem;
+	// 	line-height: 5.6rem;
+	// 	font-family: 'Slim', sans-serif;
+  // @media screen and (max-width: 1240px) {
+  //   line-height: 4.2rem;
+  // }
+	// 	@media screen and (max-width: 768px) {
+	// 		font-size: 2.4rem;
+	// 		line-height: 3.2rem;
+	// 	}
+	// }
+
+  span {
+    font-size: 1.8rem;
+		font-family: 'NeutralMono', sans-serif;
+  }
+
+  // span {
+	// 	font-size: 1.6rem;
+	// 	line-height: 2.4rem;
+	// 	font-family: 'Slim', sans-serif;
+	// }
+
+  b {
+    font-family: 'Median', sans-serif;
   }
   `;
