@@ -3,7 +3,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import GoogleMapReact from 'google-map-react';
 import type { NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import * as Yup from 'yup';
@@ -45,6 +44,7 @@ import {
 
 import ReCAPTCHA from 'react-google-recaptcha';
 
+import ExportedImage from 'next-image-export-optimizer';
 import Header, { Section } from '../../components';
 import LanguageSwitchLink from '../../components/LanguageSwitchLink';
 import { useIsMobile } from '../../helpers';
@@ -332,11 +332,12 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				<HeroImageContent width={58}>
 					<StyledContentTitle display="onlyMobile">{t('heroSubTitle')}</StyledContentTitle>
 					<HeroRightWrapperStyled>
-						<Image
+						<ExportedImage
 							src="/images/hero.jpeg"
 							alt="Man with his hands up watching the sun set "
 							fill
 							style={{ objectFit: 'cover', objectPosition: 'center' }}
+							priority
 						/>
 					</HeroRightWrapperStyled>
 				</HeroImageContent>
@@ -347,7 +348,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 					<StyledContentTitle display="onlyMobile">{t('ourStory')}</StyledContentTitle>
 					<Parallax disabled={isMobile} translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
 						<OurMissionLeftWrapperStyled>
-							<Image
+							<ExportedImage
 								src="/images/mission.jpeg"
 								alt="Two construction workers in safety gear reviewing plans on a digital tablet"
 								fill
@@ -389,7 +390,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 			<Section appearance="dark">
 				<StyledContent width={40}>
 					<OurVisionLeftWrapperStyled>
-						<Image
+						<ExportedImage
 							src="/images/ai.jpeg"
 							alt="A climber reaching to another climber for help"
 							fill
@@ -414,7 +415,12 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				<StyledContent width={50}>
 					<Parallax disabled={isMobile} translateY={['0', '10%']} shouldAlwaysCompleteAnimation startScroll={0}>
 						<OurValuesLeftWrapperStyled>
-							<Image src="/images/values.jpeg" alt="A group of people standing on a mountain" fill style={{ objectFit: 'cover' }} />
+							<ExportedImage
+								src="/images/values.jpeg"
+								alt="A group of people standing on a mountain"
+								fill
+								style={{ objectFit: 'cover' }}
+							/>
 						</OurValuesLeftWrapperStyled>
 					</Parallax>
 				</StyledContent>
@@ -424,7 +430,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 				<StyledContent width={35}>
 					<StyledContentTitle display="onlyMobile">{t('ourCustomers')}</StyledContentTitle>
 					<OurValuesLeftWrapperStyled>
-						<Image
+						<ExportedImage
 							src="/images/values.jpeg"
 							alt="A group of people standing on a mountain"
 							fill
@@ -444,7 +450,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 						<OurCustomersItem key={name}>
 							<Parallax opacity={[0, 3]} shouldAlwaysCompleteAnimation startScroll={200} style={{ width: '100%', height: '100%' }}>
 								<a href={url} target="_blank" rel="noopener noreferrer">
-									<Image src={`/images/customers/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
+									<ExportedImage src={`/images/customers/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
 								</a>
 							</Parallax>
 						</OurCustomersItem>
@@ -465,7 +471,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 							<OurPartnersItem key={name}>
 								<Parallax opacity={[0, 3]} shouldAlwaysCompleteAnimation startScroll={0} style={{ width: '100%', height: '100%' }}>
 									<a href={url} target="_blank" rel="noopener noreferrer">
-										<Image src={`/images/partners/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
+										<ExportedImage src={`/images/partners/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
 									</a>
 								</Parallax>
 							</OurPartnersItem>
@@ -483,7 +489,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 							<DocumentsItem key={name}>
 								<Parallax opacity={[0, 3]} shouldAlwaysCompleteAnimation startScroll={200} style={{ width: '100%', height: '100%' }}>
 									<a href={url} target="_blank" rel="noopener noreferrer">
-										<Image src={`/images/documents/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
+										<ExportedImage src={`/images/documents/${name}.png`} alt={alt} fill style={{ objectFit: 'contain' }} />
 									</a>
 								</Parallax>
 							</DocumentsItem>
@@ -510,7 +516,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 								<TestimonialsElementLeftStyled>
 									<h4>{t('customerTitle')}</h4>
 									<TestimonialsElementWrapperStyled>
-										<Image src={`/images/testimonials/${image}.png`} alt={name} fill style={{ objectFit: 'contain' }} />
+										<ExportedImage src={`/images/testimonials/${image}.png`} alt={name} fill style={{ objectFit: 'contain' }} />
 									</TestimonialsElementWrapperStyled>
 								</TestimonialsElementLeftStyled>
 								<TestimonialsElementRightStyled>
