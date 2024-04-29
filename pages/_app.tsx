@@ -9,6 +9,7 @@ import { GlobalStyles } from '../styles/globalStyles';
 import '../styles/globals.css';
 
 import { darkTheme, lightTheme } from '../styles/Themes';
+import { MainStyled } from '../styles/styles';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [themeName, setThemeName] = useState('light');
@@ -34,11 +35,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 			<ThemeProvider theme={theme}>
 				<GlobalStyles />
-				<main>
+				<MainStyled>
 					<ParallaxProvider>
 						<Component {...pageProps} theme={theme} themeToggler={themeToggler} themeName={themeName} />
 					</ParallaxProvider>
-				</main>
+				</MainStyled>
 			</ThemeProvider>
 		</>
 	);

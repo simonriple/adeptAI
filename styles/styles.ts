@@ -25,6 +25,12 @@ interface ContactFormMessageSentProps {
 	show: boolean;
 }
 
+export const MainStyled = styled.main`
+	@media screen and (max-width: 768px) {
+		width: fit-content;
+	}
+`;
+
 export const Text = styled.p<TextProps>`
 	font-family: 'Slim', sans-serif;
 	padding: 0;
@@ -306,7 +312,8 @@ export const HeroTitleStyled = styled.h1`
 	padding-bottom: 2rem;
 
 	@media screen and (max-width: 1240px) {
-		min-width: auto;
+		min-width: 100%;
+		// width: 100%;
 	}
 
 	@media screen and (max-width: 768px) {
