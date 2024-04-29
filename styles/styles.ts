@@ -725,7 +725,7 @@ export const ContactFormMessageSentStyled = styled.div<ContactFormMessageSentPro
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: ${({ theme }) => theme.body};
+	background-color: ${({ theme }) => theme.original.fill};
 	z-index: 1;
 	display: flex;
 	justify-content: center;
@@ -735,7 +735,7 @@ export const ContactFormMessageSentStyled = styled.div<ContactFormMessageSentPro
 	line-height: 3.2rem;
 	padding: 1rem;
 	text-align: center;
-	color: #2db83d;
+	color: ${({ theme }) => theme.orange};
 	opacity: ${({ show }) => (show ? 1 : 0)};
 	pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
 	visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
