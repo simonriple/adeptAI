@@ -52,8 +52,12 @@ const Logo = ({ children }: PropsWithChildren) => children;
 Logo.displayName = 'Logo';
 Header.Logo = Logo;
 
-const Link = HeaderButtonStyled;
+const Link = ({ children }: PropsWithChildren) => children;
 Link.displayName = 'Link';
 Header.Link = Link;
+
+const Button = HeaderButtonStyled;
+Button.displayName = 'Link';
+Header.Button = Button;
 
 export default Header;

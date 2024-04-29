@@ -15,6 +15,7 @@ yarn-error.log*
 .pnp.js
 /coverage
 /build
+/out
 
 # misc
 .DS_Store
