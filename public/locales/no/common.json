@@ -16,7 +16,7 @@
 	"darkmode": "Dark mode",
 	"documents": "Dokumenter",
 	"documentsDescription": "Vi har et omfattende bibliotek av lover, forskrifter og standarder, og vi hjelper dere til å få inn det dere trenger av andre dokumenter i løsningen. Vi importerer direkte fra flere utgivere og vi har gode løsninger for å legge inn fra Pdf, Word og en rekke andre formater.*",
-	"documentsInfo": "* Vi importerer dokumenter direkte fra blant annet Loudata, Standard Norge og DNV. Vi laster også opp dokumenter fra andre utgivere, forutsatt at en gyldig lisens er på plass.",
+	"documentsInfo": "* Vi importerer dokumenter direkte fra blant annet Lovdata, Standard Norge og DNV. Vi laster også opp dokumenter fra andre utgivere, forutsatt at en gyldig lisens er på plass.",
 	"ourPartners": "Våre partnere",
 	"ourPartnersDescription": "Vi har dyktige samarbeidspartnere som kan assistere med alt fra tolkning av regelverk til styringssystem og samsvarsmålinger.",
 	"customersLink": "Kunder",
@@ -46,14 +46,6 @@
 			"role": "Kvalitetsleder",
 			"company": "IMC Diving AS",
 			"image": "imc"
-		},
-		{
-			"title": "Setting new standards",
-			"description": "Getting four new, state of the art, Jack-up new buildings successfully introduced to, and into operation on the Norwegian Continental Shelf, requires a very structured, solid and trustworthy AoC (Acknowledgement of Compliance) process towards and with the authorities.<br /><br />Even though an AoC process has a lot of repeated and similar activities included, it is for MDN of great importance to ensure- and provide evidence, that our verification process is of an individual and independent character. Obtaining and keeping track of compliance for +12,000 different legislation requirements in an AoC process is a huge task to overcome.<br /><br />With Adept™, being our main tool for performing both Technical-and Operational compliance verifications, we believe we have achieved both a more systematic (aligned across units), consistent (fixed methodology) and maybe most important and sustainable approach to the process and subsequent maintenance and follow up of the AoC, then we had before - This is something which all units in the MDN fleet are benefitting from today.<br /><br />Working with Adept™ is a pleasure. Always professional attendance to challenges we have faced in the process, fast support at all times and a constant vigilant and innovative approach to problem solving. No challenge seems unsolvable for Adept™ and it has been gratifying for MDN to observe and benefit from the constant attempts to improve the portfolio of services included in Adept™™.<br /><br />Both the \"Update Center\" and the GAP module for performing internal GAP analysis have created further sustainability.",
-			"name": "Glenn Gormsen",
-			"role": "Compliance manager",
-			"company": "Maersk Drilling Norge AS",
-			"image": "maersk"
 		}
 	],
 	"contactUs": "Kontakt oss",

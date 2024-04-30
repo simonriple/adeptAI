@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta key="robots" name="robots" content="noindex,follow" />
 				<meta key="googlebot" name="googlebot" content="noindex,follow" />
 				<title>Adept Concept AS - Compliance Management gjort enkelt</title>
-				<link rel="icon" href="/website/Adept-logo-icon.svg"></link>
+				<link rel="icon" href="/website/AdeptMonogram.png"></link>
 				<meta
 					name="keywords"
 					content="compliance, samsvar, regulatory compliance, lover, forskrifter, standarder, myndighetskrav, ptil, regelverk, weac, offshore, havvind, bygg og anlegg, enkel, software, programvare, saas"

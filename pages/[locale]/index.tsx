@@ -350,7 +350,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 						<OurMissionLeftWrapperStyled>
 							<ExportedImage
 								src="/images/mission.jpeg"
-								alt="Two construction workers in safety gear reviewing plans on a digital tablet"
+								alt="A group of colleages working together on a computer in an office"
 								fill
 								style={{ objectFit: 'cover' }}
 							/>
@@ -431,7 +431,7 @@ const Home: NextPage<HomePageProps> = ({ theme, themeToggler, themeName }) => {
 					<StyledContentTitle display="onlyMobile">{t('ourCustomers')}</StyledContentTitle>
 					<OurValuesLeftWrapperStyled>
 						<ExportedImage
-							src="/images/values.jpeg"
+							src="/images/customers.jpeg"
 							alt="A group of people standing on a mountain"
 							fill
 							style={{ objectFit: 'cover', objectPosition: '85% 50%' }}

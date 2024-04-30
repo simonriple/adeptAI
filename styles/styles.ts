@@ -257,8 +257,6 @@ export const HeroSection = styled(Section)`
 `;
 export const HeroTitleContent = styled(StyledContent)`
 	z-index: 10;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
@@ -267,8 +265,6 @@ export const HeroTitleContent = styled(StyledContent)`
 `;
 
 export const HeroImageContent = styled(StyledContent)`
-	padding-left: 0 !important;
-	padding-right: 0 !important;
 	overflow: hidden;
 	border-radius: 2.5rem;
 
